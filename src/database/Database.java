@@ -8,6 +8,6 @@ package database;
  *
  * @author hp
  */
-public class demo {
+public class Database {
     
 }
