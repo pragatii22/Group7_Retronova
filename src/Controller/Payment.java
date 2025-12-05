@@ -8,7 +8,7 @@ package Controller;
  *
  * @author ACER
  */
-class Payment {
+public class Payment {
     private String method;
     private String accountId;
     private String password;

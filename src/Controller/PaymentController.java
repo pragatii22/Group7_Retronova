@@ -6,9 +6,8 @@ package Controller;
 import dao.PaymentService;
 import javax.swing.JOptionPane;
 
-import view.payment1;
-import view.payment2;
-import Controller.Payment;
+import view.payment3;
+import view.payment4;
 /**
  *
  * @author ACER

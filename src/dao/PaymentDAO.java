@@ -4,15 +4,19 @@
  */
 package dao;
 
+import model.Payment;
 
-import Controller.Payment;
+
+
+
+//import Controller.Payment;
 
 /**
  *
  * @author ACER
  */
-public class Payment {
-    public boolean savePayment(Payment payment) {
+public class PaymentDAO {
+    public boolean savePayment(model.Payment payment) {
         // Fake save for now (database code can be added later)
         System.out.println("Saved Payment:");
         System.out.println("Method: " + payment.getMethod());
