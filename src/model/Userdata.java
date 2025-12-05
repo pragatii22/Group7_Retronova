@@ -11,19 +11,23 @@ package model;
 
   
 
-/**
- *
- * @author deepakshah
- */
+
 public class Userdata {
-    
+    private int user_id;
     private String FullName;
     
     private String UserName;
-    private String Password;
+    private String PasswordFieldl;
     private String Email;
     private String Confirmpassword;
     
+    public void setuser_id( int user_id){
+        this.user_id=user_id;
+    }
+    
+    public int getuser_id(){
+        return user_id;
+    }
     public void setFullName(String FullName){
         this.FullName=FullName;
     }
@@ -40,12 +44,12 @@ public class Userdata {
         return UserName;
     }
     
-    public void setPassword(String Password){
-        this.Password=Password;
+    public void setPassword(String PasswordFieldl){
+        this.PasswordFieldl=PasswordFieldl;
     }
     
     public String getPassword(){
-        return Password;
+        return PasswordFieldl;
     }
     
     public void setEmail(String Email){
@@ -64,14 +68,18 @@ public class Userdata {
         return Confirmpassword;
     }
     
-    public Userdata(String FullName, String UserName, String Password,String Email,String Confirmpassword){
+    public Userdata(String FullName, String UserName, String PasswordFieldl,String Email,String Confirmpassword){
         this.FullName= FullName;
         this.UserName= UserName;
-        this.Password=Password;
+        this.PasswordFieldl=PasswordFieldl;
         this.Email=Email;
         this.Confirmpassword=Confirmpassword;
         
         
+    }
+
+    public String getPasswordFieldl() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
     

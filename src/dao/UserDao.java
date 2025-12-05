@@ -19,13 +19,13 @@ public class UserDao {
     public void signUp(Userdata user){
         
         java.sql.Connection conn = mysql.openConnection();
-        String sql = "Insert into  users (FullName,UserName,Email,Password,,Confirmpassword) Values (?,?,?,?,?)";
+        String sql = "Insert into  users (FullName,UserName,Email,PasswordFieldl,,Confirmpassword) Values (?,?,?,?,?)";
         
         try(PreparedStatement pstm = conn.prepareStatement(sql)){
             
             pstm.setString(1, user.getFullName());
             pstm.setString(2, user.getUserName());
-            pstm.setString(3, user.getPassword());
+            pstm.setString(3, user.getPasswordFieldl());
             pstm.setString(4, user.getEmail());
             pstm.setString(5, user.getConfirmpassword());
           
@@ -44,13 +44,13 @@ public class UserDao {
      public boolean check(Userdata user){
         
         Connection conn = mysql.openConnection();
-        String sql = "Select * from users where FullName=? or UserName=?,Password=?,Email=?,Confirmpassword=?";
+        String sql = "Select * from users where FullName=? or UserName=?,Password=?,";
         
         try(PreparedStatement pstm = conn.prepareStatement(sql)){
             
             pstm.setString(1, user.getUserName());
             pstm.setString(2, user.getFullName());
-            pstm.setString(3, user.getEmail());
+         
             ResultSet result = pstm.executeQuery();
             return result.next();
             
