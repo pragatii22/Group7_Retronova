@@ -4,6 +4,9 @@
  */
 package group7_retronovaa;
 
+import Controller.LoginController;
+import view.Login;
+
 /**
  *
  * @author hp
@@ -15,6 +18,9 @@ public class Group7_Retronovaa {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Login log = new Login();
+        
+        log.setVisible(true);
     }
     
 }

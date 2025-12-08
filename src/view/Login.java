@@ -69,8 +69,8 @@ java.awt.EventQueue.invokeLater(() -> new Login().setVisible(true));
         LoginBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        forgetp = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LOGIN");
@@ -153,15 +153,18 @@ java.awt.EventQueue.invokeLater(() -> new Login().setVisible(true));
         jPanel1.add(jLabel3);
         jLabel3.setBounds(620, 320, 50, 16);
 
-        jButton2.setBackground(new java.awt.Color(153, 0, 51));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Login");
-        jPanel1.add(jButton2);
-        jButton2.setBounds(600, 10, 75, 23);
+        jButton1.setBackground(new java.awt.Color(240, 230, 230));
+        jButton1.setText("forgot password?");
+        jButton1.setBorder(null);
+        jPanel1.add(jButton1);
+        jButton1.setBounds(580, 240, 130, 23);
 
-        forgetp.setText("Forget Password?");
-        jPanel1.add(forgetp);
-        forgetp.setBounds(580, 240, 100, 16);
+        jTextField1.setBackground(new java.awt.Color(115, 11, 11));
+        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField1.setText("      Login");
+        jTextField1.setBorder(null);
+        jPanel1.add(jTextField1);
+        jTextField1.setBounds(620, 10, 71, 22);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -190,13 +193,13 @@ java.awt.EventQueue.invokeLater(() -> new Login().setVisible(true));
     private javax.swing.JButton LoginBtn;
     private javax.swing.JPasswordField Password;
     private javax.swing.JTextField Username;
-    private javax.swing.JLabel forgetp;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
 
