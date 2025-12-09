@@ -191,7 +191,7 @@ public class ForgetPassword extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 550, 509);
+        jPanel1.setBounds(0, 0, 551, 509);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
