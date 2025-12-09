@@ -3,12 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Acer/Desktop/RetroNova/Group7_Retronova/src/database/Database.java</file>
             <file>file:/C:/Users/Acer/Desktop/RetroNova/Group7_Retronova/src/database/MySqlConnection.java</file>
             <file>file:/C:/Users/Acer/Desktop/RetroNova/Group7_Retronova/src/view/SignUp.java</file>
             <file>file:/C:/Users/Acer/Desktop/RetroNova/Group7_Retronova/src/model/Userdata.java</file>
             <file>file:/C:/Users/Acer/Desktop/RetroNova/Group7_Retronova/src/dao/UserDao.java</file>
             <file>file:/C:/Users/Acer/Desktop/RetroNova/Group7_Retronova/src/Controller/UserController.java</file>
+=======
+            <file>file:/C:/Users/hp/OneDrive/Documents/GitHub/Group7_Retronova/src/view/ForgetPassword.java</file>
+>>>>>>> df66cf496cb2567dc645405b91de4aa9b73797c9
         </group>
     </open-files>
 </project-private>
