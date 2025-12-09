@@ -4,10 +4,12 @@
  */
 package group7_retronovaa;
 
-import Controller.UserController;
+import Controller.LoginController;
 import database.Database;
 import database.MySqlConnection;
 import view.SignUp;
+import view.Login;
+
 
 /**
  *
@@ -20,6 +22,7 @@ public class Group7_Retronovaa {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+<<<<<<< HEAD
         
 //        Database db = new MySqlConnection();
 //        if(db.openConnection() != null){
@@ -31,6 +34,11 @@ public class Group7_Retronovaa {
         SignUp signup = new SignUp();
         UserController usercontroller= new UserController(signup);
         usercontroller.open();
+=======
+        Login log = new Login();
+        
+        log.setVisible(true);
+>>>>>>> Gyanu
     }
     
 }
