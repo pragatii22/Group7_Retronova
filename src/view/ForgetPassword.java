@@ -45,7 +45,11 @@ public class ForgetPassword extends javax.swing.JFrame {
         oppsmessage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+<<<<<<< HEAD
+        setPreferredSize(new java.awt.Dimension(570, 550));
+=======
         setPreferredSize(new java.awt.Dimension(550, 509));
+>>>>>>> master
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -103,6 +107,14 @@ public class ForgetPassword extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(52, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(116, 116, 116)
+                            .addComponent(Backtosignin, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap()))
+=======
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -110,6 +122,7 @@ public class ForgetPassword extends javax.swing.JFrame {
                                 .addGap(116, 116, 116)
                                 .addComponent(Backtosignin, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())
+>>>>>>> master
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(resetpasswordtext, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(49, 49, 49))
@@ -191,7 +204,11 @@ public class ForgetPassword extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1);
+<<<<<<< HEAD
+        jPanel1.setBounds(0, 0, 550, 509);
+=======
         jPanel1.setBounds(0, 0, 551, 509);
+>>>>>>> master
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
