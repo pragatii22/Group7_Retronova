@@ -46,7 +46,7 @@ public class SignUp extends javax.swing.JFrame {
         getContentPane().add(SignUp);
         SignUp.setBounds(632, 14, 72, 23);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/signup image_1.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/signup image.jpg"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -59,12 +59,12 @@ public class SignUp extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(-1, 0, 400, 514);
+        jPanel1.setBounds(-1, 0, 400, 508);
 
         jPanel2.setBackground(new java.awt.Color(240, 230, 230));
 
