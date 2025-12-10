@@ -19,8 +19,8 @@ public class UserController {
      private final UserDao userdao = new UserDao();
     private final SignUp userView;
 
-    public UserController() {
-        this.userView = null;
+    public UserController(SignUp userView) {
+        this.userView = userView;
     }
     
    

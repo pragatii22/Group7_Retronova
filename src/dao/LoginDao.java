@@ -24,7 +24,7 @@ public class LoginDao {
      
      
      public boolean Login(LoginData user) {
-        Connection conn = mysql.openconnection();
+        Connection conn = mysql.openConnection();
         String sql = "Select * from users where username = ? or password= ?";
         try(PreparedStatement pstm = conn.prepareStatement(sql)){
             pstm.setString(1, user.getUsername());
