@@ -5,6 +5,14 @@
         <group>
             <file>file:/C:/Users/Hp/Group7_Retronova/src/group7_retronovaa/Group7_Retronovaa.java</file>
             <file>file:/C:/Users/Hp/Group7_Retronova/src/Controller/LoginController.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/dao/LoginDao.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/dao/demo.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/view/ShippingAddress.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/view/Login.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/model/LoginData.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/view/Checkout_Order.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/view/SignUp.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/view/ForgetPassword1.java</file>
         </group>
     </open-files>
 </project-private>

@@ -44,6 +44,7 @@ public class ShippingAddress extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -63,7 +64,7 @@ public class ShippingAddress extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Shipping Address");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(20, 20, 160, 30);
+        jLabel1.setBounds(10, 10, 160, 30);
 
         jPanel2.setBackground(new java.awt.Color(69, 64, 130));
 
@@ -173,6 +174,11 @@ public class ShippingAddress extends javax.swing.JFrame {
         jPanel1.add(jLabel13);
         jLabel13.setBounds(190, 120, 140, 20);
 
+        jButton2.setBackground(new java.awt.Color(240, 230, 230));
+        jButton2.setText("Narephant Pharmacy,koteshwor,Kathmandu");
+        jPanel1.add(jButton2);
+        jButton2.setBounds(10, 40, 280, 23);
+
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel14.setText("   RS.450");
         jPanel1.add(jLabel14);
@@ -219,6 +225,7 @@ public class ShippingAddress extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
