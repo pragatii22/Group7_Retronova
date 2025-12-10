@@ -4,7 +4,7 @@
  */
 package group7_retronovaa;
 
-import Controller.LoginController;
+import Controller.UserController;
 import database.Database;
 import database.MySqlConnection;
 import view.SignUp;
