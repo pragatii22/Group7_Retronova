@@ -9,7 +9,7 @@ import java.sql.*;
  *
  * @author hp
  */
-public class MySqlConnection implements Database {
+public class mySqlConnection implements Database {
 
    @Override
     public Connection openConnection() {
