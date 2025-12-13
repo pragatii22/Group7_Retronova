@@ -121,13 +121,13 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Where old stories finds new");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(30, 440, 172, 16);
+        jLabel8.setBounds(30, 440, 180, 16);
 
         jLabel9.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("-------closets--------");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(40, 470, 124, 17);
+        jLabel9.setBounds(40, 470, 123, 17);
         jPanel1.add(jLabel10);
         jLabel10.setBounds(243, 543, 0, 0);
 
@@ -135,7 +135,7 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Retro finds,Modern feels");
         jPanel1.add(jLabel11);
-        jLabel11.setBounds(20, 510, 207, 25);
+        jLabel11.setBounds(20, 510, 212, 25);
 
         jButton4.setText("LogOut");
         jButton4.addActionListener(this::jButton4ActionPerformed);
@@ -168,7 +168,7 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel12.setText("Retro Nova");
         jPanel2.add(jLabel12);
-        jLabel12.setBounds(59, 6, 192, 48);
+        jLabel12.setBounds(59, 6, 193, 48);
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/vertical_rounded_line2.png"))); // NOI18N
         jPanel2.add(jLabel13);
@@ -178,7 +178,7 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(153, 0, 0));
         jLabel14.setText("3 Sales Found");
         jPanel2.add(jLabel14);
-        jLabel14.setBounds(93, 60, 116, 25);
+        jLabel14.setBounds(93, 60, 118, 25);
 
         jButton2.setBackground(new java.awt.Color(69, 64, 130));
         jButton2.setText("Login");
@@ -305,7 +305,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabel44.setText("Quantity:1");
         jPanel2.add(jLabel44);
-        jLabel44.setBounds(660, 700, 55, 16);
+        jLabel44.setBounds(660, 700, 54, 16);
 
         jLabel45.setText("Type:Women's pant");
         jPanel2.add(jLabel45);
