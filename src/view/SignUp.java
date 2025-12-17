@@ -40,13 +40,6 @@ public class SignUp extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(720, 520));
         getContentPane().setLayout(null);
 
-        SignUp.setBackground(new java.awt.Color(102, 0, 0));
-        SignUp.setForeground(new java.awt.Color(255, 255, 255));
-        SignUp.setText("SignUp");
-        SignUp.addActionListener(this::SignUpActionPerformed);
-        getContentPane().add(SignUp);
-        SignUp.setBounds(632, 14, 72, 23);
-
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/signup image.jpg"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
