@@ -4,6 +4,11 @@
  */
 package view;
 
+import controller.ShippingAddressController;
+import model.ShippingAddressData;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Hp
@@ -11,12 +16,27 @@ package view;
 public class ShippingAddress extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ShippingAddress.class.getName());
+    
+    private ShippingAddressController controller = new ShippingAddressController();
+    private javax.swing.JComboBox<String> addressComboBox;
+    private javax.swing.JTextField addressLine1Field;
+    private javax.swing.JTextField addressLine2Field;
+    private javax.swing.JTextField cityField;
+    private javax.swing.JTextField stateField;
+    private javax.swing.JTextField zipField;
+    private javax.swing.JTextField countryField;
+    private javax.swing.JTextField phoneField;
+    private javax.swing.JButton addButton;
+    private javax.swing.JButton editButton;
+    private javax.swing.JButton deleteButton;
 
     /**
      * Creates new form ShippingAddress
      */
     public ShippingAddress() {
         initComponents();
+        initializeAddressComponents();
+        loadAddresses();
     }
 
     /**
@@ -221,6 +241,182 @@ public class ShippingAddress extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new ShippingAddress().setVisible(true));
+    }
+
+    private void initializeAddressComponents() {
+        // Initialize components
+        addressComboBox = new javax.swing.JComboBox<>();
+        addressLine1Field = new javax.swing.JTextField();
+        addressLine2Field = new javax.swing.JTextField();
+        cityField = new javax.swing.JTextField();
+        stateField = new javax.swing.JTextField();
+        zipField = new javax.swing.JTextField();
+        countryField = new javax.swing.JTextField();
+        phoneField = new javax.swing.JTextField();
+        addButton = new javax.swing.JButton("Add Address");
+        editButton = new javax.swing.JButton("Edit Address");
+        deleteButton = new javax.swing.JButton("Delete Address");
+        
+        // Set bounds (assuming null layout)
+        addressComboBox.setBounds(200, 20, 300, 25);
+        addressLine1Field.setBounds(200, 60, 300, 25);
+        addressLine2Field.setBounds(200, 100, 300, 25);
+        cityField.setBounds(200, 140, 100, 25);
+        stateField.setBounds(320, 140, 100, 25);
+        zipField.setBounds(440, 140, 100, 25);
+        countryField.setBounds(200, 180, 150, 25);
+        phoneField.setBounds(370, 180, 150, 25);
+        addButton.setBounds(200, 220, 120, 30);
+        editButton.setBounds(340, 220, 120, 30);
+        deleteButton.setBounds(480, 220, 120, 30);
+        
+        // Add labels
+        javax.swing.JLabel comboLabel = new javax.swing.JLabel("Select Address:");
+        comboLabel.setBounds(50, 20, 150, 25);
+        javax.swing.JLabel line1Label = new javax.swing.JLabel("Address Line 1:");
+        line1Label.setBounds(50, 60, 150, 25);
+        javax.swing.JLabel line2Label = new javax.swing.JLabel("Address Line 2:");
+        line2Label.setBounds(50, 100, 150, 25);
+        javax.swing.JLabel cityLabel = new javax.swing.JLabel("City:");
+        cityLabel.setBounds(50, 140, 50, 25);
+        javax.swing.JLabel stateLabel = new javax.swing.JLabel("State:");
+        stateLabel.setBounds(310, 140, 50, 25);
+        javax.swing.JLabel zipLabel = new javax.swing.JLabel("Zip:");
+        zipLabel.setBounds(430, 140, 30, 25);
+        javax.swing.JLabel countryLabel = new javax.swing.JLabel("Country:");
+        countryLabel.setBounds(50, 180, 70, 25);
+        javax.swing.JLabel phoneLabel = new javax.swing.JLabel("Phone:");
+        phoneLabel.setBounds(360, 180, 50, 25);
+        
+        // Add to panel
+        jPanel1.add(comboLabel);
+        jPanel1.add(addressComboBox);
+        jPanel1.add(line1Label);
+        jPanel1.add(addressLine1Field);
+        jPanel1.add(line2Label);
+        jPanel1.add(addressLine2Field);
+        jPanel1.add(cityLabel);
+        jPanel1.add(cityField);
+        jPanel1.add(stateLabel);
+        jPanel1.add(stateField);
+        jPanel1.add(zipLabel);
+        jPanel1.add(zipField);
+        jPanel1.add(countryLabel);
+        jPanel1.add(countryField);
+        jPanel1.add(phoneLabel);
+        jPanel1.add(phoneField);
+        jPanel1.add(addButton);
+        jPanel1.add(editButton);
+        jPanel1.add(deleteButton);
+        
+        // Add listeners
+        addressComboBox.addActionListener(e -> loadSelectedAddress());
+        addButton.addActionListener(e -> addAddress());
+        editButton.addActionListener(e -> editAddress());
+        deleteButton.addActionListener(e -> deleteAddress());
+    }
+    
+    private void loadAddresses() {
+        addressComboBox.removeAllItems();
+        addressComboBox.addItem("Select an address");
+        List<ShippingAddressData> addresses = controller.getAddresses();
+        for (ShippingAddressData addr : addresses) {
+            addressComboBox.addItem(addr.getAddressLine1() + ", " + addr.getCity());
+            addressComboBox.putClientProperty(addr.getAddressLine1() + ", " + addr.getCity(), addr);
+        }
+    }
+    
+    private void loadSelectedAddress() {
+        String selected = (String) addressComboBox.getSelectedItem();
+        if (selected != null && !selected.equals("Select an address")) {
+            ShippingAddressData addr = (ShippingAddressData) addressComboBox.getClientProperty(selected);
+            if (addr != null) {
+                addressLine1Field.setText(addr.getAddressLine1());
+                addressLine2Field.setText(addr.getAddressLine2());
+                cityField.setText(addr.getCity());
+                stateField.setText(addr.getState());
+                zipField.setText(addr.getZipCode());
+                countryField.setText(addr.getCountry());
+                phoneField.setText(addr.getPhone());
+            }
+        } else {
+            clearFields();
+        }
+    }
+    
+    private void clearFields() {
+        addressLine1Field.setText("");
+        addressLine2Field.setText("");
+        cityField.setText("");
+        stateField.setText("");
+        zipField.setText("");
+        countryField.setText("");
+        phoneField.setText("");
+    }
+    
+    private void addAddress() {
+        ShippingAddressData addr = new ShippingAddressData();
+        addr.setAddressLine1(addressLine1Field.getText());
+        addr.setAddressLine2(addressLine2Field.getText());
+        addr.setCity(cityField.getText());
+        addr.setState(stateField.getText());
+        addr.setZipCode(zipField.getText());
+        addr.setCountry(countryField.getText());
+        addr.setPhone(phoneField.getText());
+        
+        if (controller.addAddress(addr)) {
+            JOptionPane.showMessageDialog(this, "Address added successfully!");
+            loadAddresses();
+            clearFields();
+        } else {
+            JOptionPane.showMessageDialog(this, "Failed to add address. Please check all fields are filled.");
+        }
+    }
+    
+    private void editAddress() {
+        String selected = (String) addressComboBox.getSelectedItem();
+        if (selected != null && !selected.equals("Select an address")) {
+            ShippingAddressData addr = (ShippingAddressData) addressComboBox.getClientProperty(selected);
+            if (addr != null) {
+                addr.setAddressLine1(addressLine1Field.getText());
+                addr.setAddressLine2(addressLine2Field.getText());
+                addr.setCity(cityField.getText());
+                addr.setState(stateField.getText());
+                addr.setZipCode(zipField.getText());
+                addr.setCountry(countryField.getText());
+                addr.setPhone(phoneField.getText());
+                
+                if (controller.updateAddress(addr)) {
+                    JOptionPane.showMessageDialog(this, "Address updated successfully!");
+                    loadAddresses();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Failed to update address. Please check all fields are filled.");
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Please select an address to edit.");
+        }
+    }
+    
+    private void deleteAddress() {
+        String selected = (String) addressComboBox.getSelectedItem();
+        if (selected != null && !selected.equals("Select an address")) {
+            ShippingAddressData addr = (ShippingAddressData) addressComboBox.getClientProperty(selected);
+            if (addr != null) {
+                int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this address?", "Confirm Delete", JOptionPane.YES_NO_OPTION);
+                if (confirm == JOptionPane.YES_OPTION) {
+                    if (controller.deleteAddress(addr.getId())) {
+                        JOptionPane.showMessageDialog(this, "Address deleted successfully!");
+                        loadAddresses();
+                        clearFields();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Failed to delete address.");
+                    }
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Please select an address to delete.");
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

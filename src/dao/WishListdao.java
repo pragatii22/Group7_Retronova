@@ -19,7 +19,7 @@ public class WishListdao {
     
     public List<WishListItem> getWishListItems(int userId) {
         List<WishListItem> items = new ArrayList<>();
-        Connection conn = mysql.openconnection();
+        Connection conn = mysql.openConnection();
         String sql = "SELECT id, item_name, description, price, image_path FROM wishlist WHERE user_id = ?";
         try (PreparedStatement pstm = conn.prepareStatement(sql)) {
             pstm.setInt(1, userId);
@@ -41,7 +41,7 @@ public class WishListdao {
     }
     
     public boolean addToWishList(int userId, WishListItem item) {
-        Connection conn = mysql.openconnection();
+        Connection conn = mysql.openConnection();
         String sql = "INSERT INTO wishlist (user_id, item_name, description, price, image_path) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement pstm = conn.prepareStatement(sql)) {
             pstm.setInt(1, userId);
@@ -59,7 +59,7 @@ public class WishListdao {
     }
     
     public boolean removeFromWishList(int userId, int itemId) {
-        Connection conn = mysql.openconnection();
+        Connection conn = mysql.openConnection();
         String sql = "DELETE FROM wishlist WHERE user_id = ? AND id = ?";
         try (PreparedStatement pstm = conn.prepareStatement(sql)) {
             pstm.setInt(1, userId);
@@ -74,7 +74,7 @@ public class WishListdao {
     }
     
     public boolean removeAllFromWishList(int userId) {
-        Connection conn = mysql.openconnection();
+        Connection conn = mysql.openConnection();
         String sql = "DELETE FROM wishlist WHERE user_id = ?";
         try (PreparedStatement pstm = conn.prepareStatement(sql)) {
             pstm.setInt(1, userId);
