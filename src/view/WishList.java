@@ -8,14 +8,14 @@ package view;
  *
  * @author Hp
  */
-public class Checkout_Order extends javax.swing.JFrame {
+public class Wish_List extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Checkout_Order.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Wish_List.class.getName());
 
     /**
      * Creates new form Checkout_Order
      */
-    public Checkout_Order() {
+    public Wish_List() {
         initComponents();
     }
 
@@ -30,9 +30,12 @@ public class Checkout_Order extends javax.swing.JFrame {
 
         jLabel8 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        SelectItems = new javax.swing.JLabel();
-        DeleteAll = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
         Image = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -40,30 +43,48 @@ public class Checkout_Order extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         Bin = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        Checkout = new javax.swing.JLabel();
 
         jLabel8.setText("jLabel8");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(719, 508));
 
         jPanel1.setBackground(new java.awt.Color(240, 230, 230));
         jPanel1.setPreferredSize(new java.awt.Dimension(719, 508));
         jPanel1.setLayout(null);
 
+        jButton3.setBackground(new java.awt.Color(69, 64, 130));
+        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Procceed to checkout");
+        jPanel1.add(jButton3);
+        jButton3.setBounds(250, 410, 220, 30);
+
         jPanel2.setBackground(new java.awt.Color(69, 64, 130));
         jPanel2.setLayout(null);
 
-        SelectItems.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        SelectItems.setText("Select all Items");
-        jPanel2.add(SelectItems);
-        SelectItems.setBounds(70, 10, 180, 40);
+        jButton2.setBackground(new java.awt.Color(69, 64, 130));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Delete all");
+        jButton2.addActionListener(this::jButton2ActionPerformed);
+        jPanel2.add(jButton2);
+        jButton2.setBounds(500, 20, 110, 29);
 
-        DeleteAll.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        DeleteAll.setText("Delete all");
-        jPanel2.add(DeleteAll);
-        DeleteAll.setBounds(510, 10, 110, 40);
+        jButton1.setBackground(new java.awt.Color(69, 64, 130));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Select all items");
+        jPanel2.add(jButton1);
+        jButton1.setBounds(60, 20, 150, 29);
+
+        jCheckBox1.setText("Choose");
+        jCheckBox1.addActionListener(this::jCheckBox1ActionPerformed);
+        jPanel2.add(jCheckBox1);
+        jCheckBox1.setBounds(30, 20, 20, 20);
+
+        jCheckBox2.setText("Delete all ");
+        jPanel2.add(jCheckBox2);
+        jCheckBox2.setBounds(470, 20, 20, 20);
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(30, 30, 660, 60);
@@ -110,7 +131,7 @@ public class Checkout_Order extends javax.swing.JFrame {
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(108, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Bin, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -121,10 +142,10 @@ public class Checkout_Order extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
+                        .addGap(38, 38, 38)
                         .addComponent(Image, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
+                        .addGap(48, 48, 48)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -132,7 +153,7 @@ public class Checkout_Order extends javax.swing.JFrame {
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(Bin)
@@ -141,26 +162,6 @@ public class Checkout_Order extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3);
         jPanel3.setBounds(60, 130, 600, 220);
-
-        jPanel4.setBackground(new java.awt.Color(69, 64, 130));
-
-        Checkout.setBackground(new java.awt.Color(69, 64, 130));
-        Checkout.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        Checkout.setText("                 Proceed to checkout");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Checkout, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Checkout, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(jPanel4);
-        jPanel4.setBounds(230, 410, 300, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -179,6 +180,14 @@ public class Checkout_Order extends javax.swing.JFrame {
     private void BinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BinActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BinActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,15 +211,17 @@ public class Checkout_Order extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Checkout_Order().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new Wish_List().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Bin;
-    private javax.swing.JLabel Checkout;
-    private javax.swing.JLabel DeleteAll;
     private javax.swing.JLabel Image;
-    private javax.swing.JLabel SelectItems;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -219,6 +230,5 @@ public class Checkout_Order extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
 }
