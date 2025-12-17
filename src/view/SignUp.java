@@ -22,7 +22,6 @@ public class SignUp extends javax.swing.JFrame {
     private void initComponents() {
 
         jTextField1 = new javax.swing.JTextField();
-        SignUp = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -32,11 +31,13 @@ public class SignUp extends javax.swing.JFrame {
         jPasswordField1 = new javax.swing.JPasswordField();
         Confirmpassword = new javax.swing.JTextField();
         Register = new javax.swing.JButton();
+        SignUp = new javax.swing.JButton();
 
         jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 255, 102));
+        setPreferredSize(new java.awt.Dimension(720, 520));
         getContentPane().setLayout(null);
 
         SignUp.setBackground(new java.awt.Color(102, 0, 0));
@@ -137,6 +138,11 @@ public class SignUp extends javax.swing.JFrame {
         Register.setText("Register");
         Register.addActionListener(this::RegisterActionPerformed);
 
+        SignUp.setBackground(new java.awt.Color(102, 0, 0));
+        SignUp.setForeground(new java.awt.Color(255, 255, 255));
+        SignUp.setText("SignUp");
+        SignUp.addActionListener(this::SignUpActionPerformed);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -154,12 +160,17 @@ public class SignUp extends javax.swing.JFrame {
                         .addGap(79, 79, 79))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(Register)
-                        .addGap(114, 114, 114))))
+                        .addGap(114, 114, 114))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(SignUp)
+                        .addGap(34, 34, 34))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(91, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(SignUp)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addComponent(FullName, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)

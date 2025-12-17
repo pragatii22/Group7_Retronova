@@ -8,14 +8,14 @@ package view;
  *
  * @author Hp
  */
-public class Checkout_Order extends javax.swing.JFrame {
+public class Wish_List extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Checkout_Order.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Wish_List.class.getName());
 
     /**
      * Creates new form Checkout_Order
      */
-    public Checkout_Order() {
+    public Wish_List() {
         initComponents();
     }
 
@@ -211,7 +211,7 @@ public class Checkout_Order extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Checkout_Order().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new Wish_List().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
