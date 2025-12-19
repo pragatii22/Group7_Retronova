@@ -4,6 +4,9 @@
  */
 package view;
 
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author hp
@@ -17,6 +20,13 @@ public class ForgetPassword1 extends javax.swing.JFrame {
      */
     public ForgetPassword1() {
         initComponents();
+        
+    backtosignin.addActionListener(e -> {
+    ForgetPassword1.this.dispose(); // close forget password screen
+    Login login = new Login();       // reopen login screen
+    login.setVisible(true);
+});
+
     }
 
     /**
@@ -41,7 +51,10 @@ public class ForgetPassword1 extends javax.swing.JFrame {
         resetpasswordtext2 = new javax.swing.JLabel();
         Resetpasswordbutton = new javax.swing.JButton();
         tick = new javax.swing.JCheckBox();
-        Backtosignin = new javax.swing.JLabel();
+        oppsmessage = new javax.swing.JLabel();
+        sendotp = new javax.swing.JButton();
+        tick = new javax.swing.JCheckBox();
+        backtosignin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(570, 500));
@@ -85,11 +98,14 @@ public class ForgetPassword1 extends javax.swing.JFrame {
         Resetpasswordbutton.setBackground(new java.awt.Color(69, 64, 130));
         Resetpasswordbutton.setForeground(new java.awt.Color(255, 255, 255));
         Resetpasswordbutton.setText("Reset Password");
+        Resetpasswordbutton.addActionListener(this::ResetpasswordbuttonActionPerformed);
+        sendotp.setBackground(new java.awt.Color(69, 64, 130));
+        sendotp.setForeground(new java.awt.Color(255, 255, 255));
+        sendotp.setText("Send OTP");
 
         tick.addActionListener(this::tickActionPerformed);
 
-        Backtosignin.setText("    Back to sign In");
-        Backtosignin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        backtosignin.setText("Back to signin");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -98,6 +114,10 @@ public class ForgetPassword1 extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(116, 116, 116)
                 .addComponent(emailaddress, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
+                .addComponent(Resetpasswordbutton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tick)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,13 +136,36 @@ public class ForgetPassword1 extends javax.swing.JFrame {
                                         .addComponent(tick, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 69, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addContainerGap(233, Short.MAX_VALUE)
-                        .addComponent(Backtosignin, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addComponent(resetpasswordtext, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(resetpasswordtext2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(77, 77, 77))))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(116, 116, 116)
+                        .addComponent(emailaddress, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(resetpasswordtext2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(sendotp)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tick, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(resetpasswordtext, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66))
+                .addContainerGap(82, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(resetpasswordtext, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(66, 66, 66))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(backtosignin)
+                        .addGap(18, 18, 18))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,11 +180,14 @@ public class ForgetPassword1 extends javax.swing.JFrame {
                 .addComponent(resetpasswordtext2)
                 .addGap(12, 12, 12)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(Resetpasswordbutton)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(sendotp)
                     .addComponent(tick))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addComponent(Backtosignin)
-                .addGap(14, 14, 14))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(backtosignin)
+                .addGap(16, 16, 16))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -239,9 +285,8 @@ public class ForgetPassword1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Backtosignin;
     private javax.swing.JTextField Email;
-    private javax.swing.JButton Resetpasswordbutton;
+    private javax.swing.JButton backtosignin;
     private javax.swing.JLabel emailaddress;
     private javax.swing.JLabel forget;
     private javax.swing.JLabel forgetpassword;
@@ -251,7 +296,29 @@ public class ForgetPassword1 extends javax.swing.JFrame {
     private javax.swing.JLabel questionmark;
     private javax.swing.JLabel resetpasswordtext;
     private javax.swing.JLabel resetpasswordtext2;
+    private javax.swing.JButton sendotp;
     private javax.swing.JLabel subtitleOops;
     private javax.swing.JCheckBox tick;
     // End of variables declaration//GEN-END:variables
+public String getEmail() {
+        return Email.getText().trim();
+    }
+
+public void setEmail(String email) {
+    Email.setText(email);
+}
+
+    
+    public void addSendOTPListener(ActionListener listener) {
+        sendotp.addActionListener(listener);
+    }
+    
+    public void addBackListener(ActionListener listener) {
+        backtosignin.addActionListener(listener);
+    }
+    
+    public void showMessage(String message) {
+        JOptionPane.showMessageDialog(this, message);
+    }
+
 }

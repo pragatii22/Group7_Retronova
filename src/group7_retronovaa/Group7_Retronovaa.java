@@ -30,6 +30,14 @@ public class Group7_Retronovaa {
 //        }else{
 //            System.out.println("Connection Closed");
 //        }
+
+        
+        Database db = new MySqlConnection();
+        if(db.openConnection() != null){
+            System.out.println("Connection Opened");
+        }else{
+            System.out.println("Connection Closed");
+        }
         
         SignUp signup = new SignUp();
         UserController usercontroller= new UserController(signup);
@@ -39,6 +47,4 @@ public class Group7_Retronovaa {
         
         log.setVisible(true);
 
-    }
-    
 }

@@ -1,5 +1,6 @@
 /build/
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 nbproject/private/
 
@@ -11,3 +12,11 @@ nbproject/private/
 
 >>>>>>> 7a9d213e06524a3cdd46eeb25c36dd4eb80216a7
 
+=======
+<<<<<<< Updated upstream
+=======
+/nbproject/private/
+/src/database/
+
+>>>>>>> Stashed changes
+>>>>>>> auth-feature
