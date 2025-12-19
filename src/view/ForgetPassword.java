@@ -4,6 +4,9 @@
  */
 package view;
 
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author hp
@@ -17,6 +20,13 @@ public class ForgetPassword extends javax.swing.JFrame {
      */
     public ForgetPassword() {
         initComponents();
+        
+    backtosignin.addActionListener(e -> {
+    ForgetPassword1.this.dispose(); // close forget password screen
+    Login login = new Login();       // reopen login screen
+    login.setVisible(true);
+});
+
     }
 
     /**
@@ -39,10 +49,16 @@ public class ForgetPassword extends javax.swing.JFrame {
         Email = new javax.swing.JTextField();
         resetpasswordtext = new javax.swing.JLabel();
         resetpasswordtext2 = new javax.swing.JLabel();
+<<<<<<< Updated upstream:src/view/ForgetPassword.java
         Resetpasswordbutton = new javax.swing.JButton();
         Backtosignin = new javax.swing.JLabel();
         tick = new javax.swing.JCheckBox();
         oppsmessage = new javax.swing.JLabel();
+=======
+        sendotp = new javax.swing.JButton();
+        tick = new javax.swing.JCheckBox();
+        backtosignin = new javax.swing.JButton();
+>>>>>>> Stashed changes:src/view/ForgetPassword1.java
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(570, 550));
@@ -78,19 +94,27 @@ public class ForgetPassword extends javax.swing.JFrame {
 
         resetpasswordtext2.setText(" to reset your password.");
 
+<<<<<<< Updated upstream:src/view/ForgetPassword.java
         Resetpasswordbutton.setBackground(new java.awt.Color(69, 64, 130));
         Resetpasswordbutton.setForeground(new java.awt.Color(255, 255, 255));
         Resetpasswordbutton.setText("Reset Password");
         Resetpasswordbutton.addActionListener(this::ResetpasswordbuttonActionPerformed);
+=======
+        sendotp.setBackground(new java.awt.Color(69, 64, 130));
+        sendotp.setForeground(new java.awt.Color(255, 255, 255));
+        sendotp.setText("Send OTP");
 
-        Backtosignin.setText("    Back to sign In");
-        Backtosignin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tick.addActionListener(this::tickActionPerformed);
+>>>>>>> Stashed changes:src/view/ForgetPassword1.java
+
+        backtosignin.setText("Back to signin");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+<<<<<<< Updated upstream:src/view/ForgetPassword.java
                 .addGap(70, 70, 70)
                 .addComponent(Resetpasswordbutton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -115,6 +139,33 @@ public class ForgetPassword extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(resetpasswordtext2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(77, 77, 77))))
+=======
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(116, 116, 116)
+                        .addComponent(emailaddress, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(resetpasswordtext2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(sendotp)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tick, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(82, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(resetpasswordtext, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(66, 66, 66))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(backtosignin)
+                        .addGap(18, 18, 18))))
+>>>>>>> Stashed changes:src/view/ForgetPassword1.java
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,12 +179,17 @@ public class ForgetPassword extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(resetpasswordtext2)
                 .addGap(12, 12, 12)
+<<<<<<< Updated upstream:src/view/ForgetPassword.java
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(Resetpasswordbutton)
+=======
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(sendotp)
+>>>>>>> Stashed changes:src/view/ForgetPassword1.java
                     .addComponent(tick))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addComponent(Backtosignin)
-                .addGap(14, 14, 14))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(backtosignin)
+                .addGap(16, 16, 16))
         );
 
         oppsmessage.setForeground(new java.awt.Color(0, 153, 0));
@@ -229,9 +285,8 @@ public class ForgetPassword extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Backtosignin;
     private javax.swing.JTextField Email;
-    private javax.swing.JButton Resetpasswordbutton;
+    private javax.swing.JButton backtosignin;
     private javax.swing.JLabel emailaddress;
     private javax.swing.JLabel forget;
     private javax.swing.JButton forgetpassword;
@@ -242,7 +297,29 @@ public class ForgetPassword extends javax.swing.JFrame {
     private javax.swing.JLabel questionmark;
     private javax.swing.JLabel resetpasswordtext;
     private javax.swing.JLabel resetpasswordtext2;
+    private javax.swing.JButton sendotp;
     private javax.swing.JLabel subtitleOops;
     private javax.swing.JCheckBox tick;
     // End of variables declaration//GEN-END:variables
+public String getEmail() {
+        return Email.getText().trim();
+    }
+
+public void setEmail(String email) {
+    Email.setText(email);
+}
+
+    
+    public void addSendOTPListener(ActionListener listener) {
+        sendotp.addActionListener(listener);
+    }
+    
+    public void addBackListener(ActionListener listener) {
+        backtosignin.addActionListener(listener);
+    }
+    
+    public void showMessage(String message) {
+        JOptionPane.showMessageDialog(this, message);
+    }
+
 }

@@ -15,6 +15,26 @@ public class Group7_Retronovaa {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+<<<<<<< Updated upstream
+=======
+
+        
+        Database db = new MySqlConnection();
+        if(db.openConnection() != null){
+            System.out.println("Connection Opened");
+        }else{
+            System.out.println("Connection Closed");
+        }
+        
+        SignUp signup = new SignUp();
+        UserController usercontroller= new UserController(signup);
+        usercontroller.open();
+
+        Login log = new Login();
+        
+        log.setVisible(true);
+
+>>>>>>> Stashed changes
     }
     
 }
