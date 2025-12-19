@@ -37,6 +37,8 @@ public class SignUp extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 255, 102));
+        setMinimumSize(new java.awt.Dimension(800, 620));
+        setResizable(false);
         getContentPane().setLayout(null);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/signup image.jpg"))); // NOI18N
