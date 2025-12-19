@@ -14,11 +14,12 @@ public class MySqlConnection implements Database {
    @Override
     public Connection openConnection() {
         try{
-            String password = "admin123";
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String password = "DHANKALA098";
             String username = "root";
-            String database = "RetroNova";
+            String database = "retronova";
             Connection connection;
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + database,username,password);
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + database + "?serverTimezone=UTC",username,password);
             
             if(connection == null){
                 System.out.println("Not connection");
@@ -30,6 +31,9 @@ public class MySqlConnection implements Database {
             
         }catch(SQLException e){
             System.out.println(e);
+            return null;
+        } catch (ClassNotFoundException e) {
+            System.out.println("MySQL JDBC Driver not found: " + e);
             return null;
         }
     }

@@ -3,7 +3,36 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/hp/OneDrive/Desktop/Group7_Retronova/src/view/Admindashboard.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/group7_retronovaa/Group7_Retronovaa.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/controller/LoginController.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/dao/LoginDao.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/view/ShippingAddress.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/view/Login.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/model/LoginData.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/images/bin.png</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/view/WishList.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/view/Dashboard.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/images/BinLogo.png</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/dao/WishListdao.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/database/MySqlConnection.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/controller/WishListController.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/view/SignUp.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/view/Admindashboard.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/view/ForgetPassword1.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/view/add.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/view/admin2.png</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/view/payment3.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/view/payment4.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/view/sellers.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/model/WishListItem.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/model/ShippingAddressData.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/dao/ShippingAddressDao.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/controller/ShippingAddressController.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/controller/Payment.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/controller/PaymentController.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/dao/PaymentDAO.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/dao/PaymentService.java</file>
+            <file>file:/C:/Users/Hp/Group7_Retronova/src/database/Database.java</file>
         </group>
     </open-files>
 </project-private>
