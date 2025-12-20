@@ -4,6 +4,9 @@
  */
 package view;
 
+import Controller.CartController;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ACER
@@ -11,12 +14,126 @@ package view;
 public class add extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(add.class.getName());
+    private CartController cartController;
+    private int currentUserId = 1; // This should be set from login session
+    private int productId = 1; // This should be passed when creating the form
 
     /**
      * Creates new form add
      */
     public add() {
         initComponents();
+        cartController = new CartController(currentUserId);
+        setupEventListeners();
+    }
+    
+    /**
+     * Constructor with user ID and product ID
+     * @param userId The logged-in user's ID
+     * @param productId The product ID to display
+     */
+    public add(int userId, int productId) {
+        initComponents();
+        this.currentUserId = userId;
+        this.productId = productId;
+        cartController = new CartController(userId);
+        setupEventListeners();
+    }
+    
+    /**
+     * Setup event listeners for buttons
+     */
+    private void setupEventListeners() {
+        // Buy Now button click handler
+        buyBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                handleBuyNow();
+            }
+        });
+    }
+    
+    /**
+     * Handle Add to Cart button click
+     */
+    private void handleAddToCart() {
+        try {
+            // Get product details from the form
+            String productName = jLabel3.getText() + " " + jLabel2.getText() + " " + jLabel4.getText();
+            String description = productName;
+            String priceText = jLabel5.getText().replace("Rs .", "").trim();
+            double price = Double.parseDouble(priceText);
+            int quantity = 1; // Default quantity, can be made dynamic with a spinner
+            String size = jLabel6.getText().replace("size:", "").trim();
+            String color = jLabel7.getText().replace("Colour:", "").trim();
+            String imagePath = "/images/strawberry.jpg";
+            
+            // Add to cart using controller
+            boolean success = cartController.addItemToCart(
+                productId, 
+                productName, 
+                description, 
+                price, 
+                quantity, 
+                size, 
+                color, 
+                imagePath
+            );
+            
+            if (success) {
+                JOptionPane.showMessageDialog(this, 
+                    "Item added to cart successfully!", 
+                    "Success", 
+                    JOptionPane.INFORMATION_MESSAGE);
+                
+                // Optionally update cart count display
+                updateCartCount();
+            } else {
+                JOptionPane.showMessageDialog(this, 
+                    "Failed to add item to cart. Please try again.", 
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, 
+                "Invalid price format.", 
+                "Error", 
+                JOptionPane.ERROR_MESSAGE);
+            logger.log(java.util.logging.Level.SEVERE, "Error parsing price", e);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, 
+                "An error occurred while adding to cart.", 
+                "Error", 
+                JOptionPane.ERROR_MESSAGE);
+            logger.log(java.util.logging.Level.SEVERE, "Error adding to cart", e);
+        }
+    }
+    
+    /**
+     * Handle Buy Now button click
+     */
+    private void handleBuyNow() {
+        // First add to cart
+        handleAddToCart();
+        
+        // Then redirect to checkout/payment page
+        // You can implement navigation to payment page here
+        JOptionPane.showMessageDialog(this, 
+            "Proceeding to checkout...", 
+            "Buy Now", 
+            JOptionPane.INFORMATION_MESSAGE);
+        
+        // Example: Open payment page
+        // new payment3(currentUserId).setVisible(true);
+        // this.dispose();
+    }
+    
+    /**
+     * Update the cart count display (if you have a cart icon/counter)
+     */
+    private void updateCartCount() {
+        int cartCount = cartController.getCartItemCount();
+        // Update UI element showing cart count
+        System.out.println("Cart now has " + cartCount + " items");
     }
 
     /**
@@ -34,12 +151,12 @@ public class add extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        buyBtn = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        addToCartBtn = new javax.swing.JButton();
 
         jFormattedTextField1.setText("jFormattedTextField1");
 
@@ -58,13 +175,9 @@ public class add extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setText("Shoulder Vintage Tee Tops");
 
-        jTextField1.setBackground(new java.awt.Color(69, 64, 130));
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.setText("Add To Cart");
-
-        jButton1.setBackground(new java.awt.Color(69, 64, 130));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Buy Now");
+        buyBtn.setBackground(new java.awt.Color(69, 64, 130));
+        buyBtn.setForeground(new java.awt.Color(255, 255, 255));
+        buyBtn.setText("Buy Now");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Rs .450");
@@ -75,18 +188,20 @@ public class add extends javax.swing.JFrame {
 
         jLabel8.setText("Quantity");
 
+        addToCartBtn.setBackground(new java.awt.Color(69, 64, 130));
+        addToCartBtn.setForeground(new java.awt.Color(255, 255, 255));
+        addToCartBtn.setText("Add To Cart");
+        addToCartBtn.addActionListener(this::addToCartBtnActionPerformed);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -102,11 +217,14 @@ public class add extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(18, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(88, 88, 88)
+                .addComponent(buyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(addToCartBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(82, 82, 82))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,10 +246,10 @@ public class add extends javax.swing.JFrame {
                         .addComponent(jLabel8)
                         .addGap(15, 15, 15)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(buyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addToCartBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(84, 84, 84))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -142,21 +260,19 @@ public class add extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void addToCartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToCartBtnActionPerformed
+        handleAddToCart();
+    }//GEN-LAST:event_addToCartBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,7 +300,8 @@ public class add extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton addToCartBtn;
+    private javax.swing.JButton buyBtn;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -195,6 +312,5 @@ public class add extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
