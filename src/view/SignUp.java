@@ -74,22 +74,62 @@ public class SignUp extends javax.swing.JFrame {
 
         Confirmpassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Confirmpassword.setText("Confirm pass");
+        Confirmpassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                ConfirmpasswordFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                ConfirmpasswordFocusLost(evt);
+            }
+        });
 
         FullName.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         FullName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         FullName.setText("FullName");
+        FullName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                FullNameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                FullNameFocusLost(evt);
+            }
+        });
 
         Email.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         Email.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Email.setText("Email");
+        Email.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                EmailFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                EmailFocusLost(evt);
+            }
+        });
 
         UserName.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         UserName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         UserName.setText("UserName");
+        UserName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                UserNameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                UserNameFocusLost(evt);
+            }
+        });
         UserName.addActionListener(this::UserNameActionPerformed);
 
         Password.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Password.setText("jPasswordField2");
+        Password.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                PasswordFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                PasswordFocusLost(evt);
+            }
+        });
         Password.addActionListener(this::PasswordActionPerformed);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -156,29 +196,73 @@ public class SignUp extends javax.swing.JFrame {
     private void PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PasswordActionPerformed
-private void EmailFocusGained(java.awt.event.FocusEvent evt) {                                  
-    }            
-    private void FullNameFocusGained(java.awt.event.FocusEvent evt) {                                  
-        if(FullName.getText().equals("Enter your FullName")){
-        }
-    }    
-    private void FullNameFocusLost(java.awt.event.FocusEvent evt) {                                
-        if(FullName.getText().equals("")){
-            FullName.setText("Enter your FullName");
-        }
-    }            
-    private void UserNameFocusGained(java.awt.event.FocusEvent evt) {                                  
-        if(UserName.getText().equals("Enter your UserName")){
-            UserName.setText("");
-        }
-    }                                 
 
-    private void UserNameFocusLost(java.awt.event.FocusEvent evt) {                                
-        if(UserName.getText().equals("")){
-            UserName.setText("Enter your UserName");
-        }
-    }            
+    private void FullNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_FullNameFocusGained
+         if (FullName.getText().equals("FullName")) {
+        FullName.setText("");
+         }
     
+    }//GEN-LAST:event_FullNameFocusGained
+
+    private void FullNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_FullNameFocusLost
+        if (FullName.getText().isEmpty()) {
+        FullName.setText("FullName");
+        }
+    }//GEN-LAST:event_FullNameFocusLost
+
+    private void EmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_EmailFocusGained
+        if (Email.getText().equals("Email")) {
+        Email.setText("");
+        }
+    }//GEN-LAST:event_EmailFocusGained
+
+    private void EmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_EmailFocusLost
+        if (Email.getText().isEmpty()) {
+        Email.setText("Email");
+        }
+    }//GEN-LAST:event_EmailFocusLost
+
+    private void UserNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_UserNameFocusGained
+        if (UserName.getText().equals("UserName")) {
+        UserName.setText("");
+        }
+    
+    }//GEN-LAST:event_UserNameFocusGained
+
+    private void UserNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_UserNameFocusLost
+        if (UserName.getText().isEmpty()) {
+        UserName.setText("UserName");
+        }
+    }//GEN-LAST:event_UserNameFocusLost
+
+    private void PasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PasswordFocusGained
+        String pwd = new String(Password.getPassword());
+        if (pwd.equals("jPasswordField2")) {
+            Password.setText("");
+        }
+    }//GEN-LAST:event_PasswordFocusGained
+
+    private void PasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PasswordFocusLost
+        String pwd = new String(Password.getPassword());
+        if (pwd.isEmpty()) {
+            Password.setText("jPasswordField2");
+        }
+    }//GEN-LAST:event_PasswordFocusLost
+
+    private void ConfirmpasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ConfirmpasswordFocusGained
+        String pwd = new String(Confirmpassword.getPassword());
+        if (pwd.equals("Confirm pass")) {
+            Confirmpassword.setText("");
+        }
+    }//GEN-LAST:event_ConfirmpasswordFocusGained
+
+    private void ConfirmpasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ConfirmpasswordFocusLost
+        String pwd = new String(Confirmpassword.getPassword());
+        if (pwd.isEmpty()) {
+            Confirmpassword.setText("Confirm pass");
+        }
+    }//GEN-LAST:event_ConfirmpasswordFocusLost
+              
 
     
      

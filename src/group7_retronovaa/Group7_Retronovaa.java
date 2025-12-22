@@ -46,5 +46,6 @@ public class Group7_Retronovaa {
         Login log = new Login();
         
         log.setVisible(true);
-
+    
+    }
 }

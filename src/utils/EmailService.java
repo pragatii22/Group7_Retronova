@@ -16,7 +16,7 @@ public class EmailService {
     private static final String SMTP_HOST = "smtp.gmail.com";
     private static final String SMTP_PORT = "587";
     private static final String EMAIL_USERNAME = "pragatishhai022@gmail.com";
-    private static final String EMAIL_PASSWORD = "wafpyhfpbfzollvg ";   
+    private static final String EMAIL_PASSWORD = " wafp yhfp bfzo llvg ";   
     
     public static boolean sendOTPEmail(String recipientEmail, String otpCode) {
         Properties props = new Properties();
