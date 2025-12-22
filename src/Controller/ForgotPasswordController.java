@@ -12,23 +12,25 @@ package Controller;
 import dao.OTPDAO;
 import dao.UserDao;
 import view.EmailOTP;
-import view.ForgetPassword1;
+import view.ForgetPassword;
 import view.Resetpassword;
 import view.Login;
 import utils.OTPService;
 import javax.swing.JOptionPane;
+
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import utils.EmailService;
 
 public class ForgotPasswordController {
-    private ForgetPassword1 emailView;
+    private ForgetPassword emailView;
     private EmailOTP otpView;
     private Resetpassword resetView;
     private OTPDAO otpDao = new OTPDAO();
     private UserDao userDao = new UserDao();
     
-    public ForgotPasswordController(ForgetPassword1 view) {
+    public ForgotPasswordController(ForgetPassword view) {
         this.emailView = view;
         emailView.addSendOTPListener(new SendOTPListener());
         emailView.addBackListener(new BackListener());
@@ -37,6 +39,18 @@ public class ForgotPasswordController {
     public void open() {
         emailView.setVisible(true);
     }
+
+    class ForgotPasswordListener implements ActionListener {
+        public static final Window LoginView = null;
+
+        @Override
+         public void actionPerformed(ActionEvent e) {
+            LoginView.dispose(); // close login
+        ForgetPassword view = new ForgetPassword();
+        new ForgotPasswordController(view).open();
+    }
+}
+
     
     class SendOTPListener implements ActionListener {
         @Override

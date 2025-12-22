@@ -37,9 +37,10 @@ public class EmailOTP extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         OTP = new javax.swing.JLabel();
-        OTP1 = new javax.swing.JTextField();
         resetpassword = new javax.swing.JButton();
         Resendpassword = new javax.swing.JButton();
+        OTP1 = new javax.swing.JLabel();
+        OTPTEXT = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -48,12 +49,6 @@ public class EmailOTP extends javax.swing.JFrame {
 
         OTP.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         OTP.setText("RECOVER YOUR ACCOUNT");
-
-        OTP1.setBackground(new java.awt.Color(0, 0, 153));
-        OTP1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        OTP1.setForeground(new java.awt.Color(255, 255, 255));
-        OTP1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        OTP1.setText("ENTER OTP");
 
         resetpassword.setBackground(new java.awt.Color(0, 0, 153));
         resetpassword.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -65,38 +60,48 @@ public class EmailOTP extends javax.swing.JFrame {
         Resendpassword.setForeground(new java.awt.Color(255, 255, 255));
         Resendpassword.setText("Resend");
 
+        OTP1.setText("ENTER OTP");
+
+        OTPTEXT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        OTPTEXT.setText("OTP HERE");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(145, 145, 145)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(resetpassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(OTP1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(107, Short.MAX_VALUE)
+                .addComponent(OTP, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(87, 87, 87))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(Resendpassword)
-                        .addGap(158, 158, 158))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(OTP, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(87, 87, 87))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(145, 145, 145)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(OTPTEXT, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(OTP1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addComponent(resetpassword))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(155, 155, 155)
+                        .addComponent(Resendpassword)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(OTP)
-                .addGap(29, 29, 29)
-                .addComponent(OTP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(OTP1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(OTPTEXT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(resetpassword)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Resendpassword)
-                .addContainerGap(118, Short.MAX_VALUE))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1);
@@ -132,7 +137,8 @@ public class EmailOTP extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel OTP;
-    private javax.swing.JTextField OTP1;
+    private javax.swing.JLabel OTP1;
+    private javax.swing.JTextField OTPTEXT;
     private javax.swing.JButton Resendpassword;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton resetpassword;
