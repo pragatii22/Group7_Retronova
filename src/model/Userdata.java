@@ -21,6 +21,12 @@ public class Userdata {
     private String Email;
     private String Confirmpassword;
     
+    public Userdata(String Email, String Password) {
+        this.Email = Email;
+        this.PasswordFieldl = Password;
+        
+    }
+    
     public void setuser_id( int user_id){
         this.user_id=user_id;
     }
