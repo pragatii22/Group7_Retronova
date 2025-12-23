@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import model.Userdata;
+import view.Login;
 import view.SignUp;
 
 /**
@@ -19,8 +20,9 @@ public class UserController {
      private final UserDao userdao = new UserDao();
     private final SignUp userView;
 
-    public UserController(SignUp userView) {
+     public UserController(SignUp userView) {
         this.userView = userView;
+        this.userView.AddaddUserListener(new AddActionListner());
     }
     
    
@@ -32,45 +34,59 @@ public class UserController {
     }
 
     class AddActionListner implements ActionListener {
+        
+        
         @Override
         public void actionPerformed(ActionEvent ex) {
+        try {
+            String FullName = userView.getFullName().getText();
+            String UserName = userView.getUserName().getText();
+            String Email= userView.getEmail().getText();
+            String Password = new String(userView.getPasswordField().getPassword());
+            String ConfirmPassword = new String(userView.getConfirmpassword().getPassword());
+
             
-            try{
-                
-                String FullName = userView.getFullName().getText();
-                String UserName = userView.getUserName().getText();
-                String PasswordFieldl =userView.getPasswordFieldl().getText();
-                String Email =userView.getEmail().getText();
-                String Confirmpassword =userView.getConfirmpassword().getText();
-                
-                Userdata userdata = new Userdata(FullName,UserName,PasswordFieldl,Email,Confirmpassword);
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                boolean check = userdao.check(userdata);
-                if(check){
-                    JOptionPane.showMessageDialog(userView, "Duplicate user");
-                }else{
-                    userdao.signUp(userdata);
-                    JOptionPane.showMessageDialog(userView,"Succesfull");
-//                    Login lc = new Login();
-//                    LoginController log = new LoginController(lc);
-//                    log.close();
-//                    log.open();
-                   
-                }
-                
-            }catch(Exception e){
-                System.out.println(e.getMessage());
+            
+            if (FullName.trim().isEmpty() ||
+                UserName.trim().isEmpty() ||
+                Email.trim().isEmpty() ||
+                Password.trim().isEmpty() ||
+                ConfirmPassword.trim().isEmpty()) {
+
+                JOptionPane.showMessageDialog(userView,
+                        "Please fill all fields!");
+                return;
             }
+            // Check if passwords match
+            if (!Password.equals(ConfirmPassword)) {
+                JOptionPane.showMessageDialog(userView, "Passwords do not match!");
+                return;
+            }
+
+
             
+            Userdata userdata = new Userdata(FullName, Email, UserName, Password, ConfirmPassword);
+            
+            boolean exists = userdao.checkUser(userdata);
+            if (exists) {
+                JOptionPane.showMessageDialog(userView,
+                      "User already exists with this email or phone number.");
+            } else {
+                userdao.signUp(userdata);
+                JOptionPane.showMessageDialog(userView,
+                        "Registration successful! Please log in.");
+                
+                  Login loginView = new Login();
+                LoginController loginController = new LoginController(loginView);
+                
+                close();
+                loginController.open();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(userView, "Error: " + e.getMessage());
         }
+    }
     }
     
     

@@ -13,7 +13,7 @@ public class WishList extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(WishList.class.getName());
 
     /**
-     * Creates new form Checkout_Order
+     * Creates new form WishList
      */
     public WishList() {
         initComponents();
@@ -111,8 +111,7 @@ public class WishList extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("RS.450");
 
-        Bin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bin.png"))); // NOI18N
-        Bin.setText("jButton1");
+        Bin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/BinLogo.png"))); // NOI18N
         Bin.setBorder(null);
         Bin.addActionListener(this::BinActionPerformed);
 

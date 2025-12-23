@@ -39,8 +39,6 @@ public class Admindashboard extends javax.swing.JFrame {
         Orderss = new javax.swing.JButton();
         users = new javax.swing.JButton();
         adminicon = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Admintext = new javax.swing.JTextArea();
         removee = new javax.swing.JButton();
         addproduct1 = new javax.swing.JButton();
         editt = new javax.swing.JButton();
@@ -100,15 +98,6 @@ public class Admindashboard extends javax.swing.JFrame {
         adminicon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/admin2.png"))); // NOI18N
         jPanel1.add(adminicon);
         adminicon.setBounds(100, 10, 90, 70);
-
-        Admintext.setColumns(20);
-        Admintext.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        Admintext.setRows(5);
-        Admintext.setText("ADMIN\n");
-        jScrollPane1.setViewportView(Admintext);
-
-        jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(80, 80, 70, 30);
 
         jPanel2.add(jPanel1);
         jPanel1.setBounds(0, 0, 270, 770);
@@ -220,7 +209,6 @@ public class Admindashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea Admintext;
     private javax.swing.JTable Items;
     private javax.swing.JButton Orderss;
     private javax.swing.JButton addproduct1;
@@ -236,7 +224,6 @@ public class Admindashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton logoutt;
     private javax.swing.JButton productss;

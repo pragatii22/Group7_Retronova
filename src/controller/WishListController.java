@@ -1,4 +1,4 @@
-package controller;
+package Controller;
 
 import dao.WishListdao;
 import java.util.List;

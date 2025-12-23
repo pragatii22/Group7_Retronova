@@ -7,6 +7,7 @@
 
 package view;
 
+import Controller.UserController;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 /**
@@ -14,6 +15,7 @@ import javax.swing.*;
  * @author DELL
  */
 public class Login extends javax.swing.JFrame {
+   
     
 
         private static void addActionListener(ActionListener listener) {
@@ -25,12 +27,20 @@ public class Login extends javax.swing.JFrame {
 
     public Login() {
         initComponents();
-    }
+        forgetpasswordbut.addActionListener(e -> openForgetPassword());
+         
+}
+    private void openForgetPassword() {
+    ForgetPassword forgetScreen = new ForgetPassword();
+    
+    // Optional: pre-fill email from username field
+    forgetScreen.setUsername(Username.getText().trim());
 
+    
+    forgetScreen.setVisible(true); // show forget password screen
+    this.dispose(); // close login screen (optional)
+}
 
-    // ------------------------------------------------------------------------------------
-    // Listener Adders (Same structure as your SignUp class)
-    // ------------------------------------------------------------------------------------
 
     public void AddLoginListener(ActionListener listener) {
         LoginBtn.addActionListener(listener);
@@ -42,6 +52,8 @@ public class Login extends javax.swing.JFrame {
     public JTextField getEmail() {
         return Username;
     }
+    
+    
 
     /**
      *
@@ -68,9 +80,9 @@ java.awt.EventQueue.invokeLater(() -> new Login().setVisible(true));
         Password = new javax.swing.JPasswordField();
         LoginBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
+        signup0 = new javax.swing.JButton();
+        forgetpasswordbut = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LOGIN");
@@ -109,7 +121,8 @@ java.awt.EventQueue.invokeLater(() -> new Login().setVisible(true));
 
         Username.setBackground(new java.awt.Color(217, 217, 217));
         Username.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Username.setText("        Email/Username");
+        Username.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Username.setText("Email/Username");
         Username.setBorder(new javax.swing.border.AbstractBorder() {
             @Override
             public void paintBorder(java.awt.Component c, java.awt.Graphics g, int x, int y, int width, int height) {
@@ -119,11 +132,21 @@ java.awt.EventQueue.invokeLater(() -> new Login().setVisible(true));
                 g2.drawRoundRect(x, y, width - 1, height - 1, 30, 30);
             }
         });
+        Username.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        Username.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                UsernameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                UsernameFocusLost(evt);
+            }
+        });
         jPanel1.add(Username);
         Username.setBounds(470, 150, 170, 30);
 
         Password.setBackground(new java.awt.Color(217, 217, 217));
-        Password.setText("               .................");
+        Password.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Password.setText(".................");
         Password.setBorder(new javax.swing.border.AbstractBorder() {
             @Override
             public void paintBorder(java.awt.Component c, java.awt.Graphics g, int x, int y, int width, int height) {
@@ -133,6 +156,15 @@ java.awt.EventQueue.invokeLater(() -> new Login().setVisible(true));
                 g2.drawRoundRect(x, y, width - 1, height - 1, 30, 30);
             }
         });
+        Password.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                PasswordFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                PasswordFocusLost(evt);
+            }
+        });
+        Password.addActionListener(this::PasswordActionPerformed);
         jPanel1.add(Password);
         Password.setBounds(470, 200, 170, 30);
 
@@ -147,24 +179,24 @@ java.awt.EventQueue.invokeLater(() -> new Login().setVisible(true));
         jPanel1.add(jLabel2);
         jLabel2.setBounds(470, 320, 150, 16);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(153, 0, 0));
-        jLabel3.setText("Signup");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(620, 320, 50, 16);
-
-        jButton1.setBackground(new java.awt.Color(240, 230, 230));
-        jButton1.setText("forgot password?");
-        jButton1.setBorder(null);
-        jPanel1.add(jButton1);
-        jButton1.setBounds(580, 240, 130, 23);
-
         jTextField1.setBackground(new java.awt.Color(115, 11, 11));
         jTextField1.setForeground(new java.awt.Color(255, 255, 255));
         jTextField1.setText("      Login");
         jTextField1.setBorder(null);
         jPanel1.add(jTextField1);
         jTextField1.setBounds(620, 10, 71, 22);
+
+        signup0.setBackground(new java.awt.Color(240, 230, 230));
+        signup0.setText("Signup");
+        signup0.addActionListener(this::signup0ActionPerformed);
+        jPanel1.add(signup0);
+        signup0.setBounds(620, 320, 75, 23);
+
+        forgetpasswordbut.setBackground(new java.awt.Color(240, 230, 230));
+        forgetpasswordbut.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        forgetpasswordbut.setText("Forget Password?");
+        jPanel1.add(forgetpasswordbut);
+        forgetpasswordbut.setBounds(600, 240, 130, 22);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -185,6 +217,48 @@ java.awt.EventQueue.invokeLater(() -> new Login().setVisible(true));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void signup0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signup0ActionPerformed
+        
+// TODO add your handling code here:
+        this.dispose();
+        SignUp signup= new SignUp();  
+       UserController usercontroller= new UserController(signup);
+       usercontroller.open();
+    }//GEN-LAST:event_signup0ActionPerformed
+
+    private void UsernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_UsernameFocusLost
+
+        if (Username.getText().equals("")) {
+             Username.setText("Email/Username");
+         }
+    }//GEN-LAST:event_UsernameFocusLost
+
+    private void UsernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_UsernameFocusGained
+        if (Username.getText().equals("Email/Username")) {
+             Username.setText("");
+         }
+    }//GEN-LAST:event_UsernameFocusGained
+
+    private void PasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PasswordFocusGained
+        String Pwd =  new String(Password.getPassword());
+        if (Pwd.equals(".................")) {
+             Password.setText("");
+            
+        }
+    }//GEN-LAST:event_PasswordFocusGained
+
+    private void PasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PasswordFocusLost
+        String Pwd = new String(Password.getPassword());
+        if (Pwd.isEmpty()) {
+             Password.setText(".................");
+             
+        }
+    }//GEN-LAST:event_PasswordFocusLost
+
+    private void PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PasswordActionPerformed
   
 
     
@@ -193,18 +267,19 @@ java.awt.EventQueue.invokeLater(() -> new Login().setVisible(true));
     private javax.swing.JButton LoginBtn;
     private javax.swing.JPasswordField Password;
     private javax.swing.JTextField Username;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton forgetpasswordbut;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton signup0;
     // End of variables declaration//GEN-END:variables
 
 
+
 public void AddSignInListener(ActionListener listener) {
-        Login.addActionListener(listener);    
+        LoginBtn.addActionListener(listener);    
     }
 
 
@@ -214,11 +289,13 @@ public javax.swing.JPasswordField getPassword() {
 
 public javax.swing.JTextField getUsername() {
         return Username;
+        
+        
+        
 }
 }
 
 
-//Login ko source code
 
 
 
