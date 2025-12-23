@@ -12,26 +12,31 @@ public class product {
     private final String type;
     private final double price;
     private final String imagePath;
-
-     public product(String type,double price,String imagePath){
+    private final Categorys categoryId;
+    
+     public product(String type,double price,String imagePath,Categorys categoryId){
         
          this.type=type;
          this.price=price;
          this.imagePath=imagePath;
-         
+         this.categoryId=categoryId;
      
      }
      
-    public String gettype(){
+    public String getType(){
         return type;
     }
     
-    public double getprice(){
+    public double getPrice(){
         return price;
     }
     
-    public String getimagePath(){
+    public String getImagePath(){
         return imagePath;
     }
-}    
+    public Categorys getCategoryId() {
+        return categoryId;
+    }
+
+}
     

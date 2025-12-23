@@ -6,6 +6,9 @@ package view;
 
 import Controller.LoginController;
 import Controller.UserController;
+import java.util.List;
+import javax.swing.JPanel;
+import model.product;
 
 /**
  *
@@ -20,6 +23,10 @@ public class Dashboard extends javax.swing.JFrame {
      */
     public Dashboard() {
         initComponents();
+        // Set layout for Imagepanel so products display properly
+        Imagepanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 15, 15));
+        // Initialize the controller to load products
+        new Controller.DashboardController(this);
     }
 
     /**
@@ -153,7 +160,7 @@ public class Dashboard extends javax.swing.JFrame {
         jScrollPane1.setViewportView(Imagepanel);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(250, 130, 1140, 610);
+        jScrollPane1.setBounds(260, 130, 730, 380);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -175,7 +182,8 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_LoginbtnActionPerformed
 
     private void HomebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomebtnActionPerformed
-        // TODO add your handling code here:
+            // TODO add your handling code here:
+            
     }//GEN-LAST:event_HomebtnActionPerformed
 
     private void UserbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserbtnActionPerformed
@@ -237,6 +245,35 @@ public class Dashboard extends javax.swing.JFrame {
 public javax.swing.JComboBox<String> getFilter() {
     return Filter;
 }
+
+    public void displayproducts(List<product> products) {
+        System.out.println("[Dashboard] displayproducts() called with " + (products != null ? products.size() : 0) + " products");
+        
+        Imagepanel.removeAll();
+        
+        if (products != null && !products.isEmpty()) {
+            for (product p : products) {
+                Product1 card = new Product1();
+                card.setProduct(p);
+                Imagepanel.add(card);
+            }
+            System.out.println("[Dashboard] ✓ Added " + products.size() + " product cards");
+        } else {
+            System.err.println("[Dashboard] ✗ No products to display");
+        }
+        
+        Imagepanel.revalidate();
+        Imagepanel.repaint();
+        System.out.println("[Dashboard] ✓ Panel refreshed");
+    }
+    
+    public void displayProducts(List<product> products) {
+        displayproducts(products);  // Delegate to existing method for compatibility
+    }
+
+    public JPanel getImagePanel() {
+        return Imagepanel;
+    }
 
 
 }
