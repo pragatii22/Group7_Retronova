@@ -61,3 +61,4 @@ public class WishListItem {
         this.imagePath = imagePath;
     }
 }
+
