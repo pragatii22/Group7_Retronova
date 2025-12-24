@@ -31,3 +31,5 @@ public class WishListController {
     
     // You can add more methods as needed, like select all, etc.
 }
+
+

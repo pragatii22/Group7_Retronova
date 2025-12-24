@@ -4,8 +4,6 @@
  */
 package database;
 
-
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.*;
@@ -14,40 +12,12 @@ import java.sql.*;
  *
  * @author hp
  */
-
-public class MySqlConnection implements database {
-
-   @Override
-    public Connection openConnection() {
-        try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            String password = "DHANKALA098";
-            String username = "root";
-            String database = "retronova";
-            Connection connection;
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + database + "?serverTimezone=UTC",username,password);
-            
-            if(connection == null){
-                System.out.println("Not connection");
-            }else{
-                System.out.println("Successfull");
-            }
-            System.out.println(database);
-            return connection;
-            
-        }catch(SQLException e){
-            System.out.println(e);
-            return null;
-        } catch (ClassNotFoundException e) {
-            System.out.println("MySQL JDBC Driver not found: " + e);
-            return null;
-
 public class MySqlConnection implements Database{
 
     @Override
     public Connection openConnection() {
         try{
-            String password = "admin123";
+            String password = "DHANKALA098";
             String username = "root";
             String database = " hello";
          Connection connection;
@@ -64,18 +34,11 @@ public class MySqlConnection implements Database{
         } catch(SQLException e){
             System.out.println(e);
             return null;
-
         }
     }
 
     @Override
     public void closeConnection(Connection conn) {
-        
-        try{
-            if(conn != null && !conn.isClosed()){
-                conn.close();
-            }
-           
         try{
             if(conn !=null && !conn.isClosed()){
                 conn.close();
@@ -86,35 +49,6 @@ public class MySqlConnection implements Database{
         
     }
 
-    @Override
-    public ResultSet runQuery(Connection conn, String query) {
-        
-        try{
-            Statement stmp = conn.createStatement();
-            ResultSet result = stmp.executeQuery(query);
-            return result;
-        
-        }catch(SQLException e){
-            System.out.println(e);
-            return null;
-         }
-    }
-    
-
-    @Override
-    public int executeUpdate(Connection conn, String query) {
-        
-         try{
-            Statement stmp = conn.createStatement();
-            int result = stmp.executeUpdate(query);
-            return result;
-        
-        }catch(SQLException e){
-            System.out.println(e);
-            return -1;
-         }
-    }
-    
         @Override
 
     public ResultSet runQuery(Connection conn, String query) {
