@@ -20,20 +20,26 @@ import model.LoginData;
 
 
 public class LoginDao {
-     MySqlConnection mysql = new MySqlConnection() {};    
-     
-     
-     public boolean Login(LoginData user) {
+
+    MySqlConnection mysql = new MySqlConnection() {};
+
+    public boolean login(LoginData user) {
         Connection conn = mysql.openConnection();
-        String sql = "Select * from users where username = ? or password= ?";
-        try(PreparedStatement pstm = conn.prepareStatement(sql)){
+        String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+
+        try (PreparedStatement pstm = conn.prepareStatement(sql)) {
+
             pstm.setString(1, user.getUsername());
             pstm.setString(2, user.getPassword());
-            ResultSet result = pstm.executeQuery();
-            return result.next();
-        }catch(SQLException e){
-            System.out.println(e);
-        }finally{
+            System.out.println("DB CHECK → " + user.getUsername() + " | " + user.getPassword());
+
+
+            ResultSet rs = pstm.executeQuery();
+            return rs.next(); // true = valid login
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
             mysql.closeConnection(conn);
         }
         return false;
