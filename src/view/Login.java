@@ -7,6 +7,7 @@
 
 package view;
 
+import Controller.LoginController;
 import Controller.UserController;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -15,15 +16,6 @@ import javax.swing.*;
  * @author DELL
  */
 public class Login extends javax.swing.JFrame {
-   
-    
-
-        private static void addActionListener(ActionListener listener) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        
-        
 
     public Login() {
         initComponents();
@@ -40,11 +32,6 @@ public class Login extends javax.swing.JFrame {
     forgetScreen.setVisible(true); // show forget password screen
     this.dispose(); // close login screen (optional)
 }
-
-
-    public void AddLoginListener(ActionListener listener) {
-        LoginBtn.addActionListener(listener);
-    }
 
    
 
@@ -63,10 +50,14 @@ public class Login extends javax.swing.JFrame {
 
    
 
-    public static void main(String args[]) {
-        
-java.awt.EventQueue.invokeLater(() -> new Login().setVisible(true));
+public static void main(String args[]) {
+    java.awt.EventQueue.invokeLater(() -> {
+        Login loginView = new Login();
+        LoginController controller = new LoginController(loginView);
+        controller.open();
+    });
 }
+
 
 
     @SuppressWarnings("unchecked")
@@ -171,6 +162,7 @@ java.awt.EventQueue.invokeLater(() -> new Login().setVisible(true));
         LoginBtn.setBackground(new java.awt.Color(69, 64, 130));
         LoginBtn.setForeground(new java.awt.Color(255, 255, 255));
         LoginBtn.setText("Login");
+        
         jPanel1.add(LoginBtn);
         LoginBtn.setBounds(520, 270, 75, 23);
 
@@ -259,6 +251,7 @@ java.awt.EventQueue.invokeLater(() -> new Login().setVisible(true));
     private void PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PasswordActionPerformed
+//GEN-LAST:event_LoginBtnActionPerformed
   
 
     

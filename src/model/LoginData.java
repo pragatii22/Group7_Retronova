@@ -14,7 +14,7 @@ public class LoginData {
     private String Password;
     
     public void setUsername(String username){
-        this.Username=username;
+        this.Username = username;
     }
     
     public String getUsername(){

@@ -5,54 +5,60 @@
 package Controller;
 
 import dao.LoginDao;
-import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;  
+import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import model.LoginData;
+import view.Dashboard;
 import view.Login;
 
-
-/**
- *
- * @author Hp
- */
 public class LoginController {
-    private final LoginDao logindao= new LoginDao();
+
+    private final LoginDao logindao = new LoginDao();
     private final Login loginview;
-    
-    
-    public  LoginController (Login Loginview){
-        this.loginview=Loginview;
-        
-  
-        loginview.AddLoginListener(new AddLoginListener());
-    }
-    public void open(){
-        this.loginview.setVisible(true);
-    }
-    public void closer(){
-        this.loginview.dispose();
+
+    public LoginController(Login loginview) {
+        this.loginview = loginview;
+        loginview.AddSignInListener(new SignInListener());
     }
 
-    class AddLoginListener implements ActionListener {
-@Override
-    public void actionPerformed (ActionEvent e){
-        try{
-            String username= loginview.getUsername().getText();
-            String password= loginview.getPassword().getText();
-            LoginData logindata = new LoginData(username,password);
-            boolean check = logindao.Login(logindata);
-            if(check){
-                JOptionPane.showMessageDialog(loginview,"Duplicate user");
-            }else{
-                logindao.Login(logindata);
-                JOptionPane.showMessageDialog(loginview,"Sucessful");
-               
+    public void open() {
+        loginview.setVisible(true);
+    }
+
+    public void close() {
+        loginview.dispose();
+    }
+
+    // ================= INNER CLASS =================
+    class SignInListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+            String username = loginview.getUsername().getText().trim();
+            String password = new String(loginview.getPassword().getPassword()).trim();
+
+            System.out.println("Username entered: [" + username + "]");
+            System.out.println("Password entered: [" + password + "]");
+
+            if (username.isEmpty() || password.isEmpty()
+                    || username.equals("Email/Username")) {
+
+                JOptionPane.showMessageDialog(loginview, "Enter valid credentials");
+                return;
             }
-        }catch (HeadlessException ex){
-            System.out.println(ex.getMessage());
+
+            LoginData logindata = new LoginData(username, password);
+            boolean isValid = logindao.login(logindata);
+
+            if (isValid) {
+                JOptionPane.showMessageDialog(loginview, "Login successful");
+                loginview.dispose();
+                new Dashboard().setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(loginview, "Invalid username or password");
+            }
         }
     }
-        }
-    }
+}

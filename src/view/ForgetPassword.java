@@ -19,7 +19,9 @@ public class ForgetPassword extends javax.swing.JFrame {
      */
     public ForgetPassword() {
         initComponents();
-        Email.setText("Enter your email");
+        Email.setForeground(java.awt.Color.GRAY); // placeholder color
+
+       
         
        
     }
@@ -67,7 +69,8 @@ public class ForgetPassword extends javax.swing.JFrame {
         forgetpassword.setBackground(new java.awt.Color(115, 11, 11));
         forgetpassword.setForeground(new java.awt.Color(255, 252, 252));
         forgetpassword.setText("Forget Password");
-        
+       
+
         forget.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 24)); // NOI18N
         forget.setText("FORGET");
 
@@ -89,12 +92,17 @@ public class ForgetPassword extends javax.swing.JFrame {
         Email.setText("Enter your email");
         Email.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                EmailFocusGained(evt);
+                if (Email.getText().equals("Enter your email")) {
+                    Email.setText("");
+                }
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                EmailFocusLost(evt);
+                if (Email.getText().trim().isEmpty()) {
+                    Email.setText("Enter your email");
+                }
             }
         });
+
         Email.addActionListener(this::EmailActionPerformed);
 
         resetpasswordtext.setText(" Don't worry, we'll email you a link");
@@ -163,18 +171,18 @@ public class ForgetPassword extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(100, 100, 100)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(subtitleOops)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(forget))
-                    .addComponent(password))
-                .addGap(6, 6, 6)
-                .addComponent(questionmark))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(subtitleOops))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(95, 95, 95)
+                                .addComponent(forget)
+                                .addGap(30, 30, 30))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(password)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addComponent(questionmark))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,17 +208,20 @@ public class ForgetPassword extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void EmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_EmailFocusGained
-         if (Email.getText().equals("Enter your email")) {
-        Email.setText("");
-         }
-    }//GEN-LAST:event_EmailFocusGained
-
-    private void EmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_EmailFocusLost
-        if (Email.getText().trim().isEmpty()) {
-        Email.setText("Enter your email");
+    private void EmailFocusGained(java.awt.event.FocusEvent evt) {                                  
+        if (Email.getForeground() != java.awt.Color.BLACK) { 
+            Email.setText("");
+            Email.setForeground(java.awt.Color.BLACK);
         }
-    }//GEN-LAST:event_EmailFocusLost
+    }                                 
+
+    private void EmailFocusLost(java.awt.event.FocusEvent evt) {                                
+        if (Email.getText().trim().isEmpty()) {
+            Email.setText("Enter your email");
+            Email.setForeground(java.awt.Color.GRAY);        // placeholder gray
+        }
+    }  
+                               
 
     private void EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailActionPerformed
         // TODO add your handling code here:
