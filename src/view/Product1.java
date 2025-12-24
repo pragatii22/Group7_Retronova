@@ -84,6 +84,15 @@ public javax.swing.JLabel getType() {
         Price.setText(String.format("Rs. %.2f", p.getPrice()));
 
         String imagePath = p.getImagePath();
+        // Delegate image loading to setImage so callers can set images directly
+        setImage(imagePath);
+    }
+
+    /**
+     * Public method to set image by relative path (e.g. "images/Menshirt.png").
+     * Uses the classloader to load resources packaged with the app.
+     */
+    public void setImage(String imagePath) {
         if (imagePath == null || imagePath.trim().isEmpty()) {
             System.out.println("[Product1] Image path is empty");
             Image.setIcon(null);
@@ -93,9 +102,9 @@ public javax.swing.JLabel getType() {
 
         imagePath = imagePath.replace("\\", "/").replace("\"", "").trim();
         System.out.println("[Product1] Loading: " + imagePath);
-        
+
         java.net.URL imgUrl = getClass().getClassLoader().getResource(imagePath);
-        
+
         if (imgUrl != null) {
             try {
                 ImageIcon icon = new ImageIcon(imgUrl);
