@@ -5,6 +5,8 @@
 package view;
 
 import java.awt.event.ActionListener;
+import java.awt.Color;
+
 
 /**
  *
@@ -64,6 +66,14 @@ public class EmailOTP extends javax.swing.JFrame {
 
         OTPTEXT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         OTPTEXT.setText("OTP HERE");
+        OTPTEXT.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                OTPTEXTFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                OTPTEXTFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -110,6 +120,20 @@ public class EmailOTP extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void OTPTEXTFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_OTPTEXTFocusGained
+        if (OTPTEXT.getText().equals("OTP HERE")) {
+            OTPTEXT.setText("");
+            OTPTEXT.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_OTPTEXTFocusGained
+
+    private void OTPTEXTFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_OTPTEXTFocusLost
+        if (OTPTEXT.getText().trim().isEmpty()) {
+            OTPTEXT.setText("OTP HERE");
+            OTPTEXT.setForeground(Color.GRAY);
+        }
+    }//GEN-LAST:event_OTPTEXTFocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -143,9 +167,11 @@ public class EmailOTP extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton resetpassword;
     // End of variables declaration//GEN-END:variables
-public String getOTP() {
-        return OTP.getText().trim();
+    
+    public String getOTP() {
+        return OTPTEXT.getText().trim();  // actual input field
     }
+
     
     public String getEmail() {
         return userEmail;
