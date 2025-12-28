@@ -5,7 +5,7 @@
 package controller;
 
 import dao.PaymentDAO;
-import model.Payment;
+import model.payment;
 
 /**
  *
