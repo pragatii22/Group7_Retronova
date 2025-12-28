@@ -68,14 +68,14 @@ public class WishList extends javax.swing.JFrame {
         jButton2.setText("Delete all");
         jButton2.addActionListener(this::jButton2ActionPerformed);
         jPanel2.add(jButton2);
-        jButton2.setBounds(500, 20, 110, 29);
+        jButton2.setBounds(500, 20, 110, 33);
 
         jButton1.setBackground(new java.awt.Color(69, 64, 130));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Select all items");
         jPanel2.add(jButton1);
-        jButton1.setBounds(60, 20, 150, 29);
+        jButton1.setBounds(60, 20, 150, 33);
 
         jCheckBox1.setText("Choose");
         jCheckBox1.addActionListener(this::jCheckBox1ActionPerformed);
@@ -111,7 +111,7 @@ public class WishList extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("RS.450");
 
-        Bin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/BinLogo.png"))); // NOI18N
+        Bin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/binLogo.png"))); // NOI18N
         Bin.setBorder(null);
         Bin.addActionListener(this::BinActionPerformed);
 
