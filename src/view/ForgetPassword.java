@@ -4,6 +4,7 @@
  */
 package view;
 
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
@@ -62,6 +63,7 @@ public class ForgetPassword extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(800, 620));
         getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(240, 230, 230));
@@ -69,7 +71,7 @@ public class ForgetPassword extends javax.swing.JFrame {
         forgetpassword.setBackground(new java.awt.Color(115, 11, 11));
         forgetpassword.setForeground(new java.awt.Color(255, 252, 252));
         forgetpassword.setText("Forget Password");
-       
+        forgetpassword.addActionListener(this::forgetpasswordActionPerformed);
 
         forget.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 24)); // NOI18N
         forget.setText("FORGET");
@@ -92,17 +94,12 @@ public class ForgetPassword extends javax.swing.JFrame {
         Email.setText("Enter your email");
         Email.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                if (Email.getText().equals("Enter your email")) {
-                    Email.setText("");
-                }
+                EmailFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                if (Email.getText().trim().isEmpty()) {
-                    Email.setText("Enter your email");
-                }
+                EmailFocusLost(evt);
             }
         });
-
         Email.addActionListener(this::EmailActionPerformed);
 
         resetpasswordtext.setText(" Don't worry, we'll email you a link");
@@ -242,6 +239,28 @@ public class ForgetPassword extends javax.swing.JFrame {
     public void setUsername(String username) {
         Email.setText(username);
     }
+    public static void main(String args[]) {
+ 
+        java.awt.EventQueue.invokeLater(() -> new ForgetPassword().setVisible(true));
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+            logger.log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+  
+        
+    }
 
     /**
      * @param args the command line arguments
@@ -267,6 +286,10 @@ public class ForgetPassword extends javax.swing.JFrame {
     private javax.swing.JLabel resetpasswordtext2;
     private javax.swing.JLabel subtitleOops;
     // End of variables declaration//GEN-END:variables
+
+    private void forgetpasswordActionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
     
 }

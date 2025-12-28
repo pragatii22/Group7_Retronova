@@ -64,22 +64,22 @@ public class Resetpassword extends javax.swing.JFrame {
                     .addComponent(confirmpw, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(secondpassword)
                     .addComponent(firstpassword))
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addContainerGap(155, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(74, 74, 74)
                 .addComponent(firstpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(secondpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(30, 30, 30)
                 .addComponent(confirmpw)
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(6, 0, 396, 300);
+        jPanel1.setBounds(6, 0, 398, 300);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -115,7 +115,8 @@ public class Resetpassword extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField secondpassword;
     // End of variables declaration//GEN-END:variables
-public String getNewPassword() {
+    
+    public String getNewPassword() {
         return new String(firstpassword.getPassword());
     }
     
