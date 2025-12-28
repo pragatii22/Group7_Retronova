@@ -57,7 +57,7 @@ public class ForgotPasswordController {
         public void actionPerformed(ActionEvent e) {
             String email = emailView.getEmail();
             
-            if (email.isEmpty() || email.equals("Enter email")) {
+            if (email.isEmpty() || email.equals("Enter your email")) {
                 JOptionPane.showMessageDialog(emailView, "Please enter your email");
                 return;
             }
