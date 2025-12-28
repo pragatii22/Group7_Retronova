@@ -3,13 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Controller;
-
+ 
 import dao.LoginDao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import model.LoginData;
 import view.Dashboard;
+import view.ForgetPassword;
 import view.Login;
 
 public class LoginController {
@@ -20,6 +21,12 @@ public class LoginController {
     public LoginController(Login loginview) {
         this.loginview = loginview;
         loginview.AddSignInListener(new SignInListener());
+        
+        loginview.addForgetPasswordListener(e -> {
+            loginview.dispose();
+            ForgetPassword fpView = new ForgetPassword();
+            new ForgotPasswordController(fpView).open();
+        });
     }
 
     public void open() {

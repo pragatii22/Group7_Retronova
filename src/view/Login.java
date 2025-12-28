@@ -19,9 +19,14 @@ public class Login extends javax.swing.JFrame {
 
     public Login() {
         initComponents();
-        forgetpasswordbut.addActionListener(e -> openForgetPassword());
+        
          
 }
+    
+    public void addForgetPasswordListener(ActionListener listener) {
+        forgetpasswordbut.addActionListener(listener);
+    }
+
     private void openForgetPassword() {
     ForgetPassword forgetScreen = new ForgetPassword();
     
@@ -251,7 +256,7 @@ public static void main(String args[]) {
     private void PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PasswordActionPerformed
-//GEN-LAST:event_LoginBtnActionPerformed
+                                        
   
 
     
