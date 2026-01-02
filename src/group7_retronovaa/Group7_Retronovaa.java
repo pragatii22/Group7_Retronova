@@ -4,9 +4,13 @@
  */
 package group7_retronovaa;
 
+import Controller.DashboardController;
+import Controller.LoginController;
 import Controller.UserController;
 import database.Database;
 import database.MySqlConnection;
+import javax.security.auth.login.LoginContext;
+import view.Dashboard;
 import view.SignUp;
 import view.Login;
 
@@ -39,13 +43,18 @@ public class Group7_Retronovaa {
             System.out.println("Connection Closed");
         }
         
-        SignUp signup = new SignUp();
-        UserController usercontroller= new UserController(signup);
-        usercontroller.open();
+//        SignUp signup = new SignUp();
+//        UserController usercontroller= new UserController(signup);
+//        usercontroller.open();
 
-        Login log = new Login();
+//        Login log = new Login();
+//        LoginController controller = new LoginController(log);
+//        controller.open();
+        //log.setVisible(true);
         
-        log.setVisible(true);
+        Dashboard d = new Dashboard();
+        DashboardController cont = new DashboardController(d);
+        cont.open();
     
     }
 }

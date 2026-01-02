@@ -9,6 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import model.LoginData;
+import model.Userdata;
+import utils.Session;
 import view.Dashboard;
 import view.ForgetPassword;
 import view.Login;
@@ -17,6 +19,11 @@ public class LoginController {
 
     private final LoginDao logindao = new LoginDao();
     private final Login loginview;
+    private Userdata user;
+
+    // Minimal cross-controller signaling: set this before opening Login to run an action after successful login
+    public static Runnable postLoginAction = null;
+    public static boolean loggedIn = false;
 
     public LoginController(Login loginview) {
         this.loginview = loginview;
@@ -46,9 +53,6 @@ public class LoginController {
             String username = loginview.getUsername().getText().trim();
             String password = new String(loginview.getPassword().getPassword()).trim();
 
-            System.out.println("Username entered: [" + username + "]");
-            System.out.println("Password entered: [" + password + "]");
-
             if (username.isEmpty() || password.isEmpty()
                     || username.equals("Email/Username")) {
 
@@ -60,12 +64,28 @@ public class LoginController {
             boolean isValid = logindao.login(logindata);
 
             if (isValid) {
+                // Mark logged-in state and run any post-login action requested by caller
+                LoginController.loggedIn = true;
+                Session.login(user);
+
                 JOptionPane.showMessageDialog(loginview, "Login successful");
                 loginview.dispose();
-                new Dashboard().setVisible(true);
+
+                if (LoginController.postLoginAction != null) {
+                    try {
+                        LoginController.postLoginAction.run();
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    } finally {
+                        LoginController.postLoginAction = null;
+                    }
+                } else {
+                    // Default behaviour: show dashboard
+                    new Dashboard().setVisible(true);
+                }
             } else {
                 JOptionPane.showMessageDialog(loginview, "Invalid username or password");
             }
         }
     }
-}
+} 

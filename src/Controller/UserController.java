@@ -41,16 +41,18 @@ public class UserController {
         try {
             String FullName = userView.getFullName().getText();
             String UserName = userView.getUserName().getText();
-            String Email= userView.getEmail().getText();
+//            String Email= userView.getEmail().getText();
             String Password = new String(userView.getPasswordField().getPassword());
+            String Email= userView.getEmail().getText();
             String ConfirmPassword = new String(userView.getConfirmpassword().getPassword());
 
             
             
             if (FullName.trim().isEmpty() ||
                 UserName.trim().isEmpty() ||
-                Email.trim().isEmpty() ||
+//                Email.trim().isEmpty() ||
                 Password.trim().isEmpty() ||
+                Email.trim().isEmpty() ||
                 ConfirmPassword.trim().isEmpty()) {
 
                 JOptionPane.showMessageDialog(userView,
@@ -65,7 +67,7 @@ public class UserController {
 
 
             
-            Userdata userdata = new Userdata(FullName, Email, UserName, Password, ConfirmPassword);
+            Userdata userdata = new Userdata(FullName, UserName, Password, Email, ConfirmPassword);
             
             boolean exists = userdao.checkUser(userdata);
             if (exists) {

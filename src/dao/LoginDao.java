@@ -25,12 +25,19 @@ public class LoginDao {
 
     public boolean login(LoginData user) {
         Connection conn = mysql.openConnection();
-        String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+        if (conn == null) {
+            System.err.println("[LoginDao] DB connection unavailable");
+            return false;
+        }
+
+        // Accept username OR email for login
+        String sql = "SELECT * FROM users WHERE (username = ? OR email = ?) AND password = ?";
 
         try (PreparedStatement pstm = conn.prepareStatement(sql)) {
 
             pstm.setString(1, user.getUsername());
-            pstm.setString(2, user.getPassword());
+            pstm.setString(2, user.getUsername());
+            pstm.setString(3, user.getPassword());
             System.out.println("DB CHECK → " + user.getUsername() + " | " + user.getPassword());
 
 

@@ -12,6 +12,7 @@
  */
 package dao;
 
+import database.MySqlConnection;
 import model.product;
 import model.Categorys;
 import java.sql.*;
@@ -19,15 +20,46 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDao {
+    
+    MySqlConnection mysql = new MySqlConnection();
 
     private Connection getConnection() throws SQLException {
-        String url = "jdbc:mysql://localhost:3306/thrift_store";
+        String url = "jdbc:mysql://localhost:3306/retronova";
         String user = "root";
         String password = "your_password";
         System.out.println("[ProductDao] Connecting to: " + url);
         return DriverManager.getConnection(url, user, password);
     }
 
+    //Deepak le add gareko 
+    // ================= GET ALL ITEMS =================
+    public List<product> getAllItems() {
+        List<product> list = new ArrayList<>();
+        String sql = "SELECT * FROM products";
+
+        try (Connection con = mysql.openConnection();
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                product item = new product(
+                        rs.getInt("productId"), // must be similar to database ko column ko name
+                        rs.getString("item_name"),
+                        rs.getDouble("price"),
+                        rs.getString("imagePath"),
+                        rs.getString("categoryId")
+                       
+                );
+                list.add(item);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+    
+    
     // fetch all products with category
     public List<product> getAllProducts() {
         List<product> products = new ArrayList<>();
@@ -52,7 +84,7 @@ public class ProductDao {
                     rs.getString("type"),
                     rs.getDouble("price"),
                     rs.getString("image_path"),
-                    cat
+                    rs.getString("categoryId")
                 );
                 
                 System.out.println("[ProductDao] → " + prod.getType() + " | Image: " + prod.getImagePath());

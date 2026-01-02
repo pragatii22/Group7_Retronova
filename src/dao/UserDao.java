@@ -19,7 +19,7 @@ public class UserDao {
     public void signUp(Userdata user){
         Connection conn = mysql.openConnection();
 
-        String sql = "INSERT INTO users (fullname, username, email, password) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO users (full_name, username, email, password) VALUES (?,?,?,?)";
 
         try (PreparedStatement pstm = conn.prepareStatement(sql)) {
             pstm.setString(1, user.getFullName());

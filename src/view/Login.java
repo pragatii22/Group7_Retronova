@@ -9,6 +9,7 @@ package view;
 
 import Controller.LoginController;
 import Controller.UserController;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 /**
@@ -167,7 +168,7 @@ public static void main(String args[]) {
         LoginBtn.setBackground(new java.awt.Color(69, 64, 130));
         LoginBtn.setForeground(new java.awt.Color(255, 255, 255));
         LoginBtn.setText("Login");
-        
+        LoginBtn.addActionListener(this::LoginBtnActionPerformed);
         jPanel1.add(LoginBtn);
         LoginBtn.setBounds(520, 270, 75, 23);
 
@@ -181,7 +182,7 @@ public static void main(String args[]) {
         jTextField1.setText("      Login");
         jTextField1.setBorder(null);
         jPanel1.add(jTextField1);
-        jTextField1.setBounds(620, 10, 71, 22);
+        jTextField1.setBounds(650, 0, 71, 22);
 
         signup0.setBackground(new java.awt.Color(240, 230, 230));
         signup0.setText("Signup");
@@ -193,15 +194,13 @@ public static void main(String args[]) {
         forgetpasswordbut.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         forgetpasswordbut.setText("Forget Password?");
         jPanel1.add(forgetpasswordbut);
-        forgetpasswordbut.setBounds(600, 240, 130, 22);
+        forgetpasswordbut.setBounds(600, 240, 120, 22);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,6 +290,10 @@ public javax.swing.JTextField getUsername() {
         
         
 }
+
+    private void LoginBtnActionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
 
 

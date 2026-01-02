@@ -4,11 +4,7 @@ import Controller.DashboardController;
 import java.util.List;
 import javax.swing.JPanel;
 import model.product;
-import java.awt.Image;
-import java.io.File;
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-
+import utils.Session;
 
 /**
  * Dashboard view – renders product cards dynamically.
@@ -18,8 +14,11 @@ public class Dashboard extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger =
             java.util.logging.Logger.getLogger(Dashboard.class.getName());
 
+    private Login lg;
+
     public Dashboard() {
         initComponents();
+        updateHeader();
 
         // ===== FIX GRID LAYOUT FOR PRODUCT CARDS =====
         Imagepanel.setLayout(new java.awt.GridLayout(0, 4, 20, 20));
@@ -35,11 +34,10 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
         Sidebarpanel = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel(); // Logo label removed, will be empty
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -55,6 +53,7 @@ public class Dashboard extends javax.swing.JFrame {
         Filter = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         Imagepanel = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel(); // Hi username label
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1399, 756));
@@ -64,19 +63,9 @@ public class Dashboard extends javax.swing.JFrame {
         Sidebarpanel.setBackground(new java.awt.Color(69, 64, 130));
         Sidebarpanel.setLayout(null);
 
-        try {
-    java.io.File logoFile = new java.io.File("C:\\Users\\Acer\\Desktop\\dashboard main\\try\\src\\images\\logo_image_4_0.jpg");
-    java.awt.image.BufferedImage originalImage = javax.imageio.ImageIO.read(logoFile);
-    
-    // Resize to fit sidebar top (200x120 pixels)
-    java.awt.Image resizedImage = originalImage.getScaledInstance(200, 120, java.awt.Image.SCALE_SMOOTH);
-    jLabel2.setIcon(new javax.swing.ImageIcon(resizedImage));
-} catch (Exception e) {
-    java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.WARNING, "Failed to load logo", e);
-    jLabel2.setText("LOGO"); // Fallback text
-}
-jLabel2.setBounds(20, 20, 200, 120);
-Sidebarpanel.add(jLabel2);
+        // Logo removed, jLabel2 will remain empty
+        jLabel2.setBounds(20, 20, 200, 120);
+        Sidebarpanel.add(jLabel2);
 
         jLabel8.setForeground(java.awt.Color.WHITE);
         jLabel8.setText("Where old stories finds new");
@@ -93,6 +82,12 @@ Sidebarpanel.add(jLabel2);
         jLabel11.setText("Retro finds, Modern feels");
         Sidebarpanel.add(jLabel11);
         jLabel11.setBounds(10, 430, 230, 25);
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 18));
+        jLabel14.setForeground(java.awt.Color.WHITE);
+        jLabel14.setText("");
+        Sidebarpanel.add(jLabel14);
+        jLabel14.setBounds(20, 330, 200, 19);
 
         Homebtn.setText("Home");
         Sidebarpanel.add(Homebtn);
@@ -152,14 +147,11 @@ Sidebarpanel.add(jLabel2);
         jScrollPane1.setBounds(250, 130, 1080, 560);
 
         pack();
-    }// </editor-fold>
+    }
 
     /* ================= Controller API ================= */
 
     public void displayProducts(List<product> products) {
-        System.out.println("[Dashboard] Rendering products: "
-                + (products != null ? products.size() : 0));
-
         Imagepanel.removeAll();
 
         if (products != null && !products.isEmpty()) {
@@ -168,8 +160,6 @@ Sidebarpanel.add(jLabel2);
                 card.setProduct(p);
                 Imagepanel.add(card);
             }
-        } else {
-            System.err.println("[Dashboard] No products to render");
         }
 
         Imagepanel.revalidate();
@@ -184,7 +174,42 @@ Sidebarpanel.add(jLabel2);
         return Filter;
     }
 
-    /* ================= Main ================= */
+    public javax.swing.JButton getLoginButton() {
+        return Loginbtn;
+    }
+
+    public javax.swing.JButton getSignUpButton() {
+        return SignUpbtn;
+    }
+
+    public javax.swing.JButton getUserButton() {
+        return Userbtn;
+    }
+
+    public javax.swing.JButton getLogoutButton() {
+        return logoutbtn;
+    }
+
+    public void updateHeader() {
+        if (Session.isLoggedIn()) {
+            jLabel14.setText("Hi, " + Session.getUser().getUserName());
+            jLabel14.setVisible(true);
+            logoutbtn.setVisible(true);
+            SignUpbtn.setVisible(false);
+            Loginbtn.setVisible(false);
+
+            if (lg != null) lg.setVisible(false);
+        } else {
+            jLabel14.setVisible(false);
+            logoutbtn.setVisible(false);
+
+            if (lg != null) lg.setVisible(true);
+        }
+    }
+
+    public JPanel getItemPanel() {
+        return Imagepanel;
+    }
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> new Dashboard().setVisible(true));
@@ -199,14 +224,15 @@ Sidebarpanel.add(jLabel2);
     private javax.swing.JButton SignUpbtn;
     private javax.swing.JPanel TopBarpanel;
     private javax.swing.JButton Userbtn;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel2; // will remain empty
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton logoutbtn;
-    
+
 }

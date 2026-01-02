@@ -39,12 +39,11 @@ public class ShippingAddress extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        proceedToPay = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -59,12 +58,12 @@ public class ShippingAddress extends javax.swing.JFrame {
         jLabel2.setMinimumSize(new java.awt.Dimension(140, 186));
         jLabel2.setPreferredSize(new java.awt.Dimension(140, 186));
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(20, 80, 140, 180);
+        jLabel2.setBounds(10, 60, 140, 180);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Shipping Address");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(10, 10, 160, 30);
+        jLabel1.setBounds(260, 10, 160, 30);
 
         jPanel2.setBackground(new java.awt.Color(69, 64, 130));
 
@@ -92,8 +91,9 @@ public class ShippingAddress extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Total : 495");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setText("Proceed to pay");
+        proceedToPay.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        proceedToPay.setText("Proceed to pay");
+        proceedToPay.addActionListener(this::proceedToPayActionPerformed);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -114,7 +114,7 @@ public class ShippingAddress extends javax.swing.JFrame {
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(99, 99, 99))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(proceedToPay, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(80, 80, 80))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -146,14 +146,14 @@ public class ShippingAddress extends javax.swing.JFrame {
                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(proceedToPay)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(230, 250, 310, 220);
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel10.setText("Quantity : 1");
         jPanel1.add(jLabel10);
         jLabel10.setBounds(190, 170, 100, 30);
@@ -161,7 +161,7 @@ public class ShippingAddress extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel11.setText("Women's Cherry Print Tee Shirt Short");
         jPanel1.add(jLabel11);
-        jLabel11.setBounds(190, 90, 260, 20);
+        jLabel11.setBounds(190, 70, 260, 30);
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel12.setText("Sleeve Crew Neck Drop Shoulder");
@@ -171,17 +171,12 @@ public class ShippingAddress extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel13.setText("Vintage Tee Tops");
         jPanel1.add(jLabel13);
-        jLabel13.setBounds(190, 120, 140, 20);
-
-        jButton2.setBackground(new java.awt.Color(240, 230, 230));
-        jButton2.setText("Narephant Pharmacy,koteshwor,Kathmandu");
-        jPanel1.add(jButton2);
-        jButton2.setBounds(10, 40, 280, 23);
+        jLabel13.setBounds(190, 130, 140, 30);
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel14.setText("   RS.450");
         jPanel1.add(jLabel14);
-        jLabel14.setBounds(50, 270, 80, 20);
+        jLabel14.setBounds(40, 250, 80, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -196,6 +191,12 @@ public class ShippingAddress extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void proceedToPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proceedToPayActionPerformed
+        // TODO add your handling code here:
+        new PaymentMethod1().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_proceedToPayActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,8 +224,6 @@ public class ShippingAddress extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -241,5 +240,10 @@ public class ShippingAddress extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton proceedToPay;
     // End of variables declaration//GEN-END:variables
+
+    public void proceedToPayment() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
